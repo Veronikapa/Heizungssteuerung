@@ -1,0 +1,13 @@
+D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\bin\Debug\Heizungssteuerung.exe.config
+D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\Heizungssteuerung.csprojResolveAssemblyReference.cache
+D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\MainWindow.baml
+D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\MainWindow.g.cs
+D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\App.g.cs
+D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\Heizungssteuerung_MarkupCompile.cache
+D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\Heizungssteuerung.g.resources
+D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\Heizungssteuerung.Properties.Resources.resources
+D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\Heizungssteuerung.csproj.GenerateResource.Cache
+D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\bin\Debug\Heizungssteuerung.exe
+D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\bin\Debug\Heizungssteuerung.pdb
+D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\Heizungssteuerung.exe
+D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\Heizungssteuerung.pdb
