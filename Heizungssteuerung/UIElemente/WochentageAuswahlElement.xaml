@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="Heizungssteuerung.UIElemente.WochentageAuswahlElement"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:t="clr-namespace:Heizungssteuerung.UIElemente"
+             mc:Ignorable="d" 
+             d:DesignHeight="20" d:DesignWidth="175" x:Name="WochentageAuswahlElementUserControl">
+    <Grid>
+        <TextBox Name="Montag" Text="MO" IsReadOnly="True" Visibility="Visible" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsHitTestVisible="True" IsEnabled="{Binding Path=ZeitplanElement.MontagAktiv, ElementName=WochentageAuswahlElementUserControl}" />
+        <TextBox Name="Dienstag" Text="DI" IsReadOnly="True" HorizontalAlignment="Left" Margin="25,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsEnabled="{Binding Path=ZeitplanElement.DienstagAktiv, ElementName=WochentageAuswahlElementUserControl}"/>
+        <TextBox Name="Mittwoch"  Text="MI" IsReadOnly="True" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsEnabled="{Binding Path=ZeitplanElement.MittwochAktiv, ElementName=WochentageAuswahlElementUserControl}"/>
+        <TextBox Name="Donnerstag" Text="DO" IsReadOnly="True" HorizontalAlignment="Left" Margin="75,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsEnabled="{Binding Path=ZeitplanElement.DonnerstagAktiv, ElementName=WochentageAuswahlElementUserControl}"/>
+        <TextBox Name="Freitag"  Text="FR" IsReadOnly="True" HorizontalAlignment="Left" Margin="100,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsEnabled="{Binding Path=ZeitplanElement.FreitagAktiv, ElementName=WochentageAuswahlElementUserControl}"/>
+        <TextBox Name="Samstag" Text="SA" IsReadOnly="True" HorizontalAlignment="Left" Margin="125,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsEnabled="{Binding Path=ZeitplanElement.SamstagAktiv, ElementName=WochentageAuswahlElementUserControl}"/>
+        <TextBox Name="Sonntag" Text="SO" IsReadOnly="True" HorizontalAlignment="Left" Margin="150,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsEnabled="{Binding Path=ZeitplanElement.SonntagAktiv, ElementName=WochentageAuswahlElementUserControl}"/>
+    </Grid>
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Heizungssteuerung;component/UIElemente/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <!-- Local styles here -->
+        </ResourceDictionary>
+    </UserControl.Resources>
+</UserControl>

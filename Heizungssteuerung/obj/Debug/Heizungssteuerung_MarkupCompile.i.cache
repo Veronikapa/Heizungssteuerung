@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\App.xaml
-11151548125
+5-1458772692
 
-15-2116076978
+181758574328
 12-1401562060
-MainWindow.xaml;
+UIElemente\Generic.xaml;MainWindow.xaml;MainZeitplan.xaml;UIElemente\WochentageAuswahlElement.xaml;UIElemente\ZeitplanUiElement.xaml;
 
-False
+True
 

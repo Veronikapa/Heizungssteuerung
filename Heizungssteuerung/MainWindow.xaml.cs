@@ -105,5 +105,18 @@ namespace Heizungssteuerung
             return raumListeStockwerk2;
         }
         #endregion InitialisiereRaumListeStockwerk1
+
+        private void Zeitplan_Click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = System.Windows.Visibility.Hidden;
+            MainZeitplan zeitplan = new MainZeitplan();
+            zeitplan.Closed += zeitplan_Closed;
+            zeitplan.Show();
+        }
+
+        void zeitplan_Closed(object sender, EventArgs e)
+        {
+            this.Visibility = System.Windows.Visibility.Visible;
+        }
     }
 }
