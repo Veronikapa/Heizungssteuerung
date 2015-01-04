@@ -9,7 +9,7 @@
         <StackPanel Background="White" Height="25" VerticalAlignment="Top">
             <Button Height="25" Width="30" HorizontalAlignment="Left" Content="Add" PreviewMouseDown="Neu_MouseDown"/>
         </StackPanel>
-        <StackPanel x:Name="ZeitplanPanel" Margin="0,25,0,0">
+        <StackPanel x:Name="ZeitplanPanel" Margin="0,25,0,0" Orientation="Vertical">
         
         </StackPanel>
     </Grid>

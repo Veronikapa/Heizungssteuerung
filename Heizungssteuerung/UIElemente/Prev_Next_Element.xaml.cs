@@ -41,7 +41,6 @@ namespace Heizungssteuerung.UIElemente
             }
         }
 
-        private int aktuellerIntWert = 0;
         private int aktuellerStringIndex = 0;
 
         public static readonly DependencyProperty StringListeProperty = DependencyProperty.Register("StringListe", typeof(List<string>), typeof(Prev_Next_Element), new FrameworkPropertyMetadata((List<string>)null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
@@ -166,49 +165,35 @@ namespace Heizungssteuerung.UIElemente
                 SetzeStringListeText();
 
             else if (IstTemperatur)
-                InitialisiereTemperatur();
+                SetzeTemperaturText();
 
             else if (IstUhrzeit)
-                InitialisiereUhrzeit();
-        }
-
-        private void InitialisiereUhrzeit()
-        {
-            aktuellerIntWert = AktuellerWert;
-
-            SetzeUhrzeitText();
+                SetzeUhrzeitText();
         }
 
         private void SetzeUhrzeitText()
         {
-            if (aktuellerIntWert < MinWert || aktuellerIntWert > MaxWert)
-                aktuellerIntWert = MinWert;
+            if (AktuellerWert < MinWert || AktuellerWert > MaxWert)
+                AktuellerWert = MinWert;
 
-            btn_Prev.IsEnabled = aktuellerIntWert != MinWert;
-            btn_Next.IsEnabled = aktuellerIntWert != MaxWert;
+            btn_Prev.IsEnabled = AktuellerWert != MinWert;
+            btn_Next.IsEnabled = AktuellerWert != MaxWert;
 
-            if (aktuellerIntWert < 10)
-                AnzuzeigenderWert = "0" + aktuellerIntWert.ToString();
+            if (AktuellerWert < 10)
+                AnzuzeigenderWert = "0" + AktuellerWert.ToString();
 
             else
-                AnzuzeigenderWert = aktuellerIntWert.ToString();
-        }
-
-        private void InitialisiereTemperatur()
-        {
-            aktuellerIntWert = AktuellerWert;
-
-            SetzeTemperaturText();
+                AnzuzeigenderWert = AktuellerWert.ToString();
         }
 
         private void SetzeTemperaturText()
         {
-            if (aktuellerIntWert < MinWert || aktuellerIntWert > MaxWert)
-                aktuellerIntWert = MinWert;
+            if (AktuellerWert < MinWert || AktuellerWert > MaxWert)
+                AktuellerWert = MinWert;
 
-            btn_Prev.IsEnabled = aktuellerIntWert != MinWert;
-            btn_Next.IsEnabled = aktuellerIntWert != MaxWert;
-            AnzuzeigenderWert = aktuellerIntWert.ToString() + "° C";
+            btn_Prev.IsEnabled = AktuellerWert != MinWert;
+            btn_Next.IsEnabled = AktuellerWert != MaxWert;
+            AnzuzeigenderWert = AktuellerWert.ToString() + "° C";
         }
 
         private void SetzeStringListeText()
@@ -244,13 +229,13 @@ namespace Heizungssteuerung.UIElemente
 
             else if(IstTemperatur)
             {
-                aktuellerIntWert--;
+                AktuellerWert--;
                 SetzeTemperaturText();
             }
 
             else if(IstUhrzeit)
             {
-                aktuellerIntWert = IstMinute ? aktuellerIntWert - 5 : aktuellerIntWert-1;
+                AktuellerWert = IstMinute ? AktuellerWert - 5 : AktuellerWert - 1;
                 SetzeUhrzeitText();
             }
         }
@@ -265,13 +250,13 @@ namespace Heizungssteuerung.UIElemente
 
             else if (IstTemperatur)
             {
-                aktuellerIntWert++;
+                AktuellerWert++;
                 SetzeTemperaturText();
             }
 
             else if (IstUhrzeit)
             {
-                aktuellerIntWert = IstMinute ? aktuellerIntWert + 5 : aktuellerIntWert+1;
+                AktuellerWert = IstMinute ? AktuellerWert + 5 : AktuellerWert + 1;
                 SetzeUhrzeitText();
             }
         }

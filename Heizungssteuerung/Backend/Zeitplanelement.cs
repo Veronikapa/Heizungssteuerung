@@ -239,7 +239,7 @@ namespace Heizungssteuerung.Backend
         {
             get
             {
-                if (raumId.Equals(String.Empty))
+                if (!raumId.Equals(String.Empty))
                     return raumId;
 
                 else if (!stockwerkId.Equals(String.Empty))

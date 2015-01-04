@@ -76,18 +76,21 @@ namespace Heizungssteuerung
 
         private void ListeLaden()
         {
+            var whiteValue = true;
+            ZeitplanPanel.Children.Clear();
+
             foreach (var zeitplanElement in this.gebauede.ZeitplanElementListe)
             {
                 var zeitplanUiElement = new ZeitplanUiElement();
                 zeitplanUiElement.ZeitplanElement = zeitplanElement;
-                zeitplanUiElement.Height = 50;
-                zeitplanUiElement.Background = Brushes.GhostWhite;
+                zeitplanUiElement.Background = whiteValue ? Brushes.AliceBlue: Brushes.GhostWhite;
                 ZeitplanPanel.Children.Add(zeitplanUiElement);
 
                 var line = new Line();
                 line.StrokeThickness = 1;
                 line.Stroke = Brushes.LightGray;
                 ZeitplanPanel.Children.Add(line);
+                whiteValue = !whiteValue;
             } 
         }
     }

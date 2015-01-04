@@ -147,10 +147,10 @@ namespace Heizungssteuerung
             zeitplanelement.SamstagAktiv = Wochentage.Samstag.IsEnabled;
             zeitplanelement.SonntagAktiv = Wochentage.Sonntag.IsEnabled;
 
-            zeitplanelement.StundeVon = Convert.ToInt32(StundeVonElement.AnzuzeigenderWert);
-            zeitplanelement.MinuteVon = Convert.ToInt32(MinuteVonElement.AnzuzeigenderWert);
-            zeitplanelement.StundeBis = Convert.ToInt32(StundeBisElement.AnzuzeigenderWert);
-            zeitplanelement.MinuteBis = Convert.ToInt32(MinuteBisElement.AnzuzeigenderWert);
+            zeitplanelement.StundeVon = StundeVonElement.AktuellerWert;
+            zeitplanelement.MinuteVon = MinuteVonElement.AktuellerWert;
+            zeitplanelement.StundeBis = StundeBisElement.AktuellerWert;
+            zeitplanelement.MinuteBis = MinuteBisElement.AktuellerWert;
 
             this.gebaeude.ZeitplanElementListe.Add(zeitplanelement);
             this.Close();
