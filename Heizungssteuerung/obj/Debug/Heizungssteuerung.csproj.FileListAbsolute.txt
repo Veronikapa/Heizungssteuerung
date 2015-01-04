@@ -19,3 +19,8 @@ D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\
 D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\UIElemente\ZeitplanUiElement.g.cs
 D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\UIElemente\WochentageAuswahlElement.baml
 D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\UIElemente\ZeitplanUiElement.baml
+D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\UIElemente\Prev_Next_Element.baml
+D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\ZeitplanNeu.baml
+D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\UIElemente\Prev_Next_Element.g.cs
+D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\ZeitplanNeu.g.cs
+D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\Heizungssteuerung.csprojResolveAssemblyReference.cache

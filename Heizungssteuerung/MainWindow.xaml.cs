@@ -109,7 +109,7 @@ namespace Heizungssteuerung
         private void Zeitplan_Click(object sender, RoutedEventArgs e)
         {
             this.Visibility = System.Windows.Visibility.Hidden;
-            MainZeitplan zeitplan = new MainZeitplan();
+            MainZeitplan zeitplan = new MainZeitplan(gebauede);
             zeitplan.Closed += zeitplan_Closed;
             zeitplan.Show();
         }

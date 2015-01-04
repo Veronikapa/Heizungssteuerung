@@ -36,6 +36,12 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Veronika\Downloads\WPFBehaviorLibrary 0.2\System.Windows.Interactivity.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -47,6 +53,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPFBehaviorLibrary">
+      <HintPath>C:\Users\Veronika\Downloads\WPFBehaviorLibrary 0.2\WPFBehaviorLibrary.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -54,16 +63,23 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Backend\Gebaeude.cs" />
+    <Compile Include="Backend\WindowExtensions.cs" />
     <Compile Include="Backend\Wohneinheit.cs" />
     <Compile Include="Backend\Raum.cs" />
     <Compile Include="MainZeitplan.xaml.cs">
       <DependentUpon>MainZeitplan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIElemente\Prev_Next_Element.xaml.cs">
+      <DependentUpon>Prev_Next_Element.xaml</DependentUpon>
     </Compile>
     <Compile Include="UIElemente\WochentageAuswahlElement.xaml.cs">
       <DependentUpon>WochentageAuswahlElement.xaml</DependentUpon>
     </Compile>
     <Compile Include="UIElemente\ZeitplanUiElement.xaml.cs">
       <DependentUpon>ZeitplanUiElement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ZeitplanNeu.xaml.cs">
+      <DependentUpon>ZeitplanNeu.xaml</DependentUpon>
     </Compile>
     <Page Include="UIElemente\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -88,11 +104,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UIElemente\Prev_Next_Element.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UIElemente\WochentageAuswahlElement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UIElemente\ZeitplanUiElement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ZeitplanNeu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,7 +148,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Icons\Next_Icon.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Prev_Icon.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

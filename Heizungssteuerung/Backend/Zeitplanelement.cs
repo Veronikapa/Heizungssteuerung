@@ -56,6 +56,11 @@ namespace Heizungssteuerung.Backend
             {
                 return zieltemperatur;
             }
+            
+            set
+            {
+                zieltemperatur = value;
+            }
         }
 
         public bool MontagAktiv
@@ -155,6 +160,10 @@ namespace Heizungssteuerung.Backend
             {
                 return stundeVon;
             }
+            set
+            {
+                stundeVon = value;
+            }
         }
 
         public int StundeBis
@@ -162,6 +171,10 @@ namespace Heizungssteuerung.Backend
             get
             {
                 return stundeBis;
+            }
+            set
+            {
+                stundeBis = value;
             }
         }
 
@@ -171,6 +184,11 @@ namespace Heizungssteuerung.Backend
             {
                 return minuteVon;
             }
+
+            set
+            {
+                minuteVon = value;
+            }
         }
 
         public int MinuteBis
@@ -178,6 +196,10 @@ namespace Heizungssteuerung.Backend
             get
             {
                 return minuteBis;
+            }
+            set
+            {
+                minuteBis = value;
             }
         }
 
@@ -195,6 +217,10 @@ namespace Heizungssteuerung.Backend
             {
                 return stockwerkId;
             }
+            set
+            {
+                stockwerkId = value;
+            }
         }
 
         public string RaumId
@@ -202,6 +228,10 @@ namespace Heizungssteuerung.Backend
             get
             {
                 return raumId;
+            }
+            set
+            {
+                raumId = value;
             }
         }
 

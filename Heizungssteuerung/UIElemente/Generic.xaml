@@ -9,7 +9,7 @@
                     <ControlTemplate TargetType="TextBox">
                     <Border Name="border" Background="Transparent" BorderThickness="1" BorderBrush="Gray">
                         <ScrollViewer Margin="0" x:Name="PART_ContentHost" Foreground="Gray"/>
-                        </Border>
+                    </Border>
                         
 
                     <ControlTemplate.Triggers>

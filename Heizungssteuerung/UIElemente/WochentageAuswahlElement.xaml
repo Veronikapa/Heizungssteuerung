@@ -7,13 +7,27 @@
              mc:Ignorable="d" 
              d:DesignHeight="20" d:DesignWidth="175" x:Name="WochentageAuswahlElementUserControl">
     <Grid>
-        <TextBox Name="Montag" Text="MO" IsReadOnly="True" Visibility="Visible" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsHitTestVisible="True" IsEnabled="{Binding Path=ZeitplanElement.MontagAktiv, ElementName=WochentageAuswahlElementUserControl}" />
-        <TextBox Name="Dienstag" Text="DI" IsReadOnly="True" HorizontalAlignment="Left" Margin="25,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsEnabled="{Binding Path=ZeitplanElement.DienstagAktiv, ElementName=WochentageAuswahlElementUserControl}"/>
-        <TextBox Name="Mittwoch"  Text="MI" IsReadOnly="True" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsEnabled="{Binding Path=ZeitplanElement.MittwochAktiv, ElementName=WochentageAuswahlElementUserControl}"/>
-        <TextBox Name="Donnerstag" Text="DO" IsReadOnly="True" HorizontalAlignment="Left" Margin="75,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsEnabled="{Binding Path=ZeitplanElement.DonnerstagAktiv, ElementName=WochentageAuswahlElementUserControl}"/>
-        <TextBox Name="Freitag"  Text="FR" IsReadOnly="True" HorizontalAlignment="Left" Margin="100,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsEnabled="{Binding Path=ZeitplanElement.FreitagAktiv, ElementName=WochentageAuswahlElementUserControl}"/>
-        <TextBox Name="Samstag" Text="SA" IsReadOnly="True" HorizontalAlignment="Left" Margin="125,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsEnabled="{Binding Path=ZeitplanElement.SamstagAktiv, ElementName=WochentageAuswahlElementUserControl}"/>
-        <TextBox Name="Sonntag" Text="SO" IsReadOnly="True" HorizontalAlignment="Left" Margin="150,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsEnabled="{Binding Path=ZeitplanElement.SonntagAktiv, ElementName=WochentageAuswahlElementUserControl}"/>
+        <StackPanel MouseDown="Montag_MouseDownHandler">
+            <TextBox Name="Montag" Text="MO" IsReadOnly="True" Visibility="Visible" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsEnabled="{Binding Path=ZeitplanElement.MontagAktiv, ElementName=WochentageAuswahlElementUserControl}" Focusable="False"/>
+        </StackPanel>
+        <StackPanel MouseDown="Dienstag_MouseDownHandler">
+            <TextBox Name="Dienstag" Text="DI" IsReadOnly="True" HorizontalAlignment="Left" Margin="25,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsEnabled="{Binding Path=ZeitplanElement.DienstagAktiv, ElementName=WochentageAuswahlElementUserControl}" Focusable="False"/>
+        </StackPanel>
+        <StackPanel MouseDown="Mittwoch_MouseDownHandler">
+            <TextBox Name="Mittwoch"  Text="MI" IsReadOnly="True" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsEnabled="{Binding Path=ZeitplanElement.MittwochAktiv, ElementName=WochentageAuswahlElementUserControl}" Focusable="False"/>
+        </StackPanel>
+        <StackPanel MouseDown="Donnerstag_MouseDownHandler">
+            <TextBox Name="Donnerstag" Text="DO" IsReadOnly="True" HorizontalAlignment="Left" Margin="75,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsEnabled="{Binding Path=ZeitplanElement.DonnerstagAktiv, ElementName=WochentageAuswahlElementUserControl}" Focusable="False"/>
+        </StackPanel>
+        <StackPanel MouseDown="Freitag_MouseDownHandler">
+            <TextBox Name="Freitag"  Text="FR" IsReadOnly="True" HorizontalAlignment="Left" Margin="100,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsEnabled="{Binding Path=ZeitplanElement.FreitagAktiv, ElementName=WochentageAuswahlElementUserControl}" Focusable="False"/>
+        </StackPanel>
+        <StackPanel MouseDown="Samstag_MouseDownHandler">
+            <TextBox Name="Samstag" Text="SA" IsReadOnly="True" HorizontalAlignment="Left" Margin="125,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsEnabled="{Binding Path=ZeitplanElement.SamstagAktiv, ElementName=WochentageAuswahlElementUserControl}" Focusable="False"/>
+        </StackPanel>
+        <StackPanel MouseDown="Sonntag_MouseDownHandler">
+            <TextBox Name="Sonntag" Text="SO" IsReadOnly="True" HorizontalAlignment="Left" Margin="150,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Style="{DynamicResource TransparentTextBox}" IsEnabled="{Binding Path=ZeitplanElement.SonntagAktiv, ElementName=WochentageAuswahlElementUserControl}" Focusable="False"/>
+        </StackPanel>
     </Grid>
 
     <UserControl.Resources>

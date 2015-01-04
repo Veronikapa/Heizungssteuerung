@@ -37,17 +37,50 @@ namespace Heizungssteuerung.UIElemente
 
         public WochentageAuswahlElement()
         {
+
             InitializeComponent();
-            AddHandler(FrameworkElement.MouseDownEvent, new MouseButtonEventHandler(MouseDownHandler), true);
         }
 
-        private void MouseDownHandler(object sender, MouseButtonEventArgs e)
+        private void Montag_MouseDownHandler(object sender, MouseButtonEventArgs e)
         {
-            if (Montag.IsMouseOver)
-                Montag.IsEnabled = !ZeitplanElement.MontagAktiv;
+            ZeitplanElement.MontagAktiv = !ZeitplanElement.MontagAktiv;
+            Montag.IsEnabled = !ZeitplanElement.MontagAktiv;
+        }
 
-            if (Dienstag.IsSelectionActive)
-                Dienstag.IsEnabled = !ZeitplanElement.DienstagAktiv;
-        } 
+        private void Dienstag_MouseDownHandler(object sender, MouseButtonEventArgs e)
+        {
+            ZeitplanElement.DienstagAktiv = !ZeitplanElement.DienstagAktiv;
+            Dienstag.IsEnabled = !ZeitplanElement.DienstagAktiv;
+        }
+
+        private void Mittwoch_MouseDownHandler(object sender, MouseButtonEventArgs e)
+        {
+            ZeitplanElement.MittwochAktiv = !ZeitplanElement.MittwochAktiv;
+            Mittwoch.IsEnabled = !ZeitplanElement.MittwochAktiv;
+        }
+
+        private void Donnerstag_MouseDownHandler(object sender, MouseButtonEventArgs e)
+        {
+            ZeitplanElement.DonnerstagAktiv = !ZeitplanElement.DonnerstagAktiv;
+            Donnerstag.IsEnabled = ZeitplanElement.DonnerstagAktiv;
+        }
+
+        private void Freitag_MouseDownHandler(object sender, MouseButtonEventArgs e)
+        {
+            ZeitplanElement.FreitagAktiv = !ZeitplanElement.FreitagAktiv;
+            Freitag.IsEnabled = ZeitplanElement.FreitagAktiv;
+        }
+
+        private void Samstag_MouseDownHandler(object sender, MouseButtonEventArgs e)
+        {
+            ZeitplanElement.SamstagAktiv = !ZeitplanElement.SamstagAktiv;
+            Samstag.IsEnabled = ZeitplanElement.SamstagAktiv;
+        }
+
+        private void Sonntag_MouseDownHandler(object sender, MouseButtonEventArgs e)
+        {
+            ZeitplanElement.SonntagAktiv = !ZeitplanElement.SonntagAktiv;
+            Sonntag.IsEnabled = !ZeitplanElement.SonntagAktiv;
+        }
     }
 }

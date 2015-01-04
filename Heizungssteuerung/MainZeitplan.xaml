@@ -2,8 +2,16 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Heizungssteuerung.UIElemente"
-        Title="Zeitplanübersicht" Height="700" Width="500" x:Name="_this">
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:h="clr-namespace:Heizungssteuerung"
+        Title="Zeitplanübersicht" Height="700" Width="500" x:Name="_this" Background="White">
     <Grid>
-        <local:ZeitplanUiElement ZeitplanElement="{Binding Path=ZeitplanElementMain, ElementName=_this, Mode=TwoWay}" Height="50" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="GhostWhite"/>
+        <StackPanel Background="White" Height="25" VerticalAlignment="Top">
+            <Button Height="25" Width="30" HorizontalAlignment="Left" Content="Add" PreviewMouseDown="Neu_MouseDown"/>
+        </StackPanel>
+        <StackPanel x:Name="ZeitplanPanel" Margin="0,25,0,0">
+        
+        </StackPanel>
     </Grid>
+  
 </Window>

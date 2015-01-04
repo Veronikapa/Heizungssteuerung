@@ -10,6 +10,7 @@ namespace Heizungssteuerung.Backend
     {
         private string stockwerkId;
         private List<Raum> raumListe;
+        private List<string> raumIdListe;
 
        public string StockwerkId
         {
@@ -27,6 +28,14 @@ namespace Heizungssteuerung.Backend
             }
         }
 
+        public List<string> RaumIdListe
+        {
+            get
+            {
+                return raumIdListe;
+            }
+        }
+
         public Stockwerk(string stockwerkId, int aktuelleTemperatur, List<Raum> raumListe)
         {
             this.stockwerkId = stockwerkId;
@@ -34,6 +43,8 @@ namespace Heizungssteuerung.Backend
             this.letzteTemperatur = aktuelleTemperatur;
             this.zielTemperatur = aktuelleTemperatur;
             this.raumListe = raumListe;
+            this.raumIdListe = new List<string>();
+            this.raumListe.ForEach(r => raumIdListe.Add(r.RaumId));
         }
     }
 }
