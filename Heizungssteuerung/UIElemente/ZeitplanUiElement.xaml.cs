@@ -35,12 +35,26 @@ namespace Heizungssteuerung.UIElemente
             }
         }
 
+        public MouseButtonEventHandler ZeitplanUiElementMouseDownEvent;
+        public EventHandler ZeitplanUiElementAktiviertEvent;
+
         public ZeitplanUiElement()
         {
             this.DataContext = ZeitplanUiElementUserControl;
 
             InitializeComponent();
-            //TODOVP Implement Wochentage logik
+        }
+
+        private void ZeitplanUiElementUserControl_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(ZeitplanUiElementMouseDownEvent!=null)
+                ZeitplanUiElementMouseDownEvent(sender, e);
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if(ZeitplanUiElementAktiviertEvent!=null)
+                ZeitplanUiElementAktiviertEvent(sender, e);
         }
     }
 }

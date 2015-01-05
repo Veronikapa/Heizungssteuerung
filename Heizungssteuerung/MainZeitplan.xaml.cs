@@ -37,6 +37,7 @@ namespace Heizungssteuerung
         {
             InitializeComponent();
             this.gebauede = gebauede;
+
             //Disable window header buttons
             this.SourceInitialized += (x, y) =>
             {
@@ -44,10 +45,6 @@ namespace Heizungssteuerung
             };
 
             this.Loaded += MainZeitplan_Loaded;
-
-            //Set back icon
-            //Uri iconUri = new Uri("pack://application:,,,/Icons/Zurueck_Icon.gif", UriKind.RelativeOrAbsolute);
-            //this.Icon = BitmapFrame.Create(iconUri);
         }
 
         void MainZeitplan_Loaded(object sender, RoutedEventArgs e)
@@ -55,14 +52,14 @@ namespace Heizungssteuerung
             ListeLaden();
         }
 
-        void ico_Click(object sender, EventArgs e)
+        private void Zurück_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
         }
 
         private void Neu_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var zeitplanNeuElement = new ZeitplanNeu(this.gebauede);
+            var zeitplanNeuElement = new ZeitplanNeuEditieren(this.gebauede);
             zeitplanNeuElement.Closed+=zeitplanNeuElement_Closed;
             this.Visibility = Visibility.Hidden;
             zeitplanNeuElement.Show();
@@ -84,6 +81,8 @@ namespace Heizungssteuerung
                 var zeitplanUiElement = new ZeitplanUiElement();
                 zeitplanUiElement.ZeitplanElement = zeitplanElement;
                 zeitplanUiElement.Background = whiteValue ? Brushes.AliceBlue: Brushes.GhostWhite;
+                zeitplanUiElement.ZeitplanUiElementMouseDownEvent = this.ZeitplanUiElementMouseDownEvent;
+                zeitplanUiElement.ZeitplanUiElementAktiviertEvent = this.ZeitplanUiElementAktiviertEvent;
                 ZeitplanPanel.Children.Add(zeitplanUiElement);
 
                 var line = new Line();
@@ -92,6 +91,41 @@ namespace Heizungssteuerung
                 ZeitplanPanel.Children.Add(line);
                 whiteValue = !whiteValue;
             } 
+        }
+
+        private void ZeitplanUiElementMouseDownEvent(object sender, MouseEventArgs e)
+        {
+            //Öffne Edit-Fenster bei Klick auf Element
+            var element = sender as ZeitplanUiElement;
+
+            if (element != null)
+            {
+                var editDialog = new ZeitplanNeuEditieren(this.gebauede, element.ZeitplanElement);
+                this.Visibility = Visibility.Hidden;
+                editDialog.Closed += editDialog_Closed;
+                editDialog.Show();
+            }
+        }
+
+        private void ZeitplanUiElementAktiviertEvent(object sender, EventArgs e)
+        {
+            //Öffne Edit-Fenster bei Klick auf Element
+            var element = sender as ZeitplanUiElement;
+
+            if (element != null)
+            {
+                if(!element.ZeitplanElement.AktiveZeitplaeneValidierung(this.gebauede.ZeitplanElementListe))
+                {
+                    element.ZeitplanElement.Aktiviert = false;
+                    MessageBox.Show("Dieser Zeitplan kann nicht aktiviert werden, da er sich mit einem anderen Zeitplan zeitlich überschneidet!", "Zeitplan-Überschneidung",MessageBoxButton.OK);
+                }
+            }
+        }
+
+        void editDialog_Closed(object sender, EventArgs e)
+        {
+            this.Visibility = Visibility.Visible;
+            ListeLaden();
         }
     }
 }

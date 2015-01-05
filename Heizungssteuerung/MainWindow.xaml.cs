@@ -64,9 +64,9 @@ namespace Heizungssteuerung
             List<Raum> raumListeStockwerk1 = new List<Raum>();
             raumListeStockwerk1.Add(new Raum("Bad1", 25, fensterListeBad1));
             raumListeStockwerk1.Add(new Raum("Vorraum1", 25, fensterListeVorraum1));
-            raumListeStockwerk1.Add(new Raum("Kueche", 25, fensterListeKueche));
+            raumListeStockwerk1.Add(new Raum("Küche", 25, fensterListeKueche));
             raumListeStockwerk1.Add(new Raum("Wohnzimmer", 25, fensterListeWohnzimmer));
-            raumListeStockwerk1.Add(new Raum("Bueor", 25, fensterListeBuero));
+            raumListeStockwerk1.Add(new Raum("Büro", 25, fensterListeBuero));
 
             return raumListeStockwerk1;
         }

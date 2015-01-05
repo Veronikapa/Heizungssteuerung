@@ -33,7 +33,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Heizungssteuerung;component/UIElemente/Generic.xaml"/>
+                <ResourceDictionary Source="/Heizungssteuerung;component/UIElemente/WochentageTextBoxStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <!-- Local styles here -->
         </ResourceDictionary>

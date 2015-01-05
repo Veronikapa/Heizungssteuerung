@@ -2,7 +2,6 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-
     <Style TargetType="{x:Type TextBox}" x:Key="TransparentTextBox">
             <Setter Property="Template">
                 <Setter.Value>
@@ -14,8 +13,8 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="TextBox.IsEnabled" Value="True">
-                            <Setter TargetName="border" Property="BorderBrush" Value="Blue"/>
-                            <Setter Property="Foreground" Value="Blue"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="CornflowerBlue"/>
+                            <Setter Property="Foreground" Value="CornflowerBlue"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

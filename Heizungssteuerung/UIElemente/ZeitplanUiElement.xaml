@@ -5,14 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:my="clr-namespace:Heizungssteuerung.UIElemente"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="500" x:Name="ZeitplanUiElementUserControl">
+             d:DesignHeight="50" d:DesignWidth="420" x:Name="ZeitplanUiElementUserControl" MouseDown="ZeitplanUiElementUserControl_MouseDown">
     <Grid>
-
-        <Label Content="{Binding Path=ZeitplanElement.WohneinheitText, ElementName=ZeitplanUiElementUserControl}" FontSize="14" Height="25" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Width="200"/>
-        <Label Content="{Binding Path=ZeitplanElement.ZieltemperaturText, ElementName=ZeitplanUiElementUserControl}" FontSize="14" Height="25" HorizontalAlignment="Left" Margin="200,0,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="{Binding Path=ZeitplanElement.WohneinheitText, ElementName=ZeitplanUiElementUserControl}" FontWeight="Bold" FontSize="14" Height="25" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Width="200"/>
+        <Label Content="{Binding Path=ZeitplanElement.ZieltemperaturText, ElementName=ZeitplanUiElementUserControl}" FontWeight="Bold" FontSize="14" Height="25" HorizontalAlignment="Left" Margin="200,0,0,0" VerticalAlignment="Top" Width="150"/>
         <my:WochentageAuswahlElement Margin="10,30,0,0" ZeitplanElement="{Binding Path=ZeitplanElement, ElementName=ZeitplanUiElementUserControl, Mode=TwoWay}"/>
-        <Label Content="{Binding Path=ZeitplanElement.UhrzeitText, ElementName=ZeitplanUiElementUserControl}" FontSize="14" Height="25" HorizontalAlignment="Left" Margin="200,27,0,0" VerticalAlignment="Top" Width="150"/>
-        <CheckBox Margin="450,10,0,0" Height="25" Width="25" BorderBrush="LightGray" Foreground="LightBlue" Visibility="Visible" IsChecked="{Binding Path=ZeitplanElement.Aktiviert, ElementName=ZeitplanUiElementUserControl}"> 
+        <Label Content="{Binding Path=ZeitplanElement.UhrzeitText, ElementName=ZeitplanUiElementUserControl}" FontSize="14" Height="Auto" HorizontalAlignment="Left" Margin="200,20,0,0" VerticalAlignment="Top" Width="150"/>
+        <CheckBox Margin="370,10,0,0" Height="25" Width="25" BorderBrush="Gray" Foreground="LightBlue" Visibility="Visible" IsChecked="{Binding Path=ZeitplanElement.Aktiviert, ElementName=ZeitplanUiElementUserControl}" Checked="CheckBox_Checked"> 
             <CheckBox.LayoutTransform>
                 <ScaleTransform ScaleX="2" ScaleY="2" />
             </CheckBox.LayoutTransform> 

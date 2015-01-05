@@ -28,6 +28,11 @@ namespace Heizungssteuerung.UIElemente
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
+
+        //Event ist zu werfen wenn benutzendes User Control über Property Änderung notifiziert werden soll.
+        //Z.B. Stockwerk ändert sich --> Raumliste aktualisieren
+        public event EventHandler NotifyPropertyChanged;
+
         private string anzuzeigenderWert = String.Empty;
         public string AnzuzeigenderWert
         {
@@ -159,7 +164,7 @@ namespace Heizungssteuerung.UIElemente
             InitialisierAnzuzeigendenWert();
         }
 
-        private void InitialisierAnzuzeigendenWert()
+        public void InitialisierAnzuzeigendenWert()
         {
             if (IstStringListe)
                 SetzeStringListeText();
@@ -169,6 +174,14 @@ namespace Heizungssteuerung.UIElemente
 
             else if (IstUhrzeit)
                 SetzeUhrzeitText();
+        }
+
+        public void InitialisierAnzuzeigendenWert(string valueToSet)
+        {
+            aktuellerStringIndex = StringListe.IndexOf(valueToSet);
+
+            if (IstStringListe)
+                SetzeStringListeText();
         }
 
         private void SetzeUhrzeitText()
@@ -225,6 +238,9 @@ namespace Heizungssteuerung.UIElemente
             {
                 aktuellerStringIndex--;
                 SetzeStringListeText();
+
+                if (NotifyPropertyChanged != null)
+                    NotifyPropertyChanged(this, e);
             }
 
             else if(IstTemperatur)
@@ -246,6 +262,9 @@ namespace Heizungssteuerung.UIElemente
             {
                 aktuellerStringIndex++;
                 SetzeStringListeText();
+
+                if(NotifyPropertyChanged!=null)
+                    NotifyPropertyChanged(this, e);
             }
 
             else if (IstTemperatur)

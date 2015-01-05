@@ -1,0 +1,64 @@
+﻿<Window x:Class="Heizungssteuerung.ZeitplanNeuEditieren"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:my="clr-namespace:Heizungssteuerung.UIElemente"
+        Height="600" Width="420" x:Name="ZeitplanNeuUserControl" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+
+            <GroupBox Header="Wohneinheit" Margin="0,5,0,0" Background="GhostWhite" Foreground="CornflowerBlue">
+                <Grid>
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton Name="rdb_Gebaeude" Content="Gebäude" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" IsChecked="True" Checked="rdb_Gebaeude_Checked"/>
+                        <RadioButton Name="rdb_Stockwerk" Content="Stockwerk" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top" IsChecked="False" Checked="rdb_Stockwerk_Checked"/>
+                        <RadioButton Name="rdb_Raum" Content="Raum" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top" IsChecked="False" Checked="rdb_Raum_Checked"/>
+                    </StackPanel>
+                    <StackPanel Margin="10,40,0,0" VerticalAlignment="Top" Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal">
+                            <my:Prev_Next_Element x:Name="GebaeudeElement" IstStringListe="True" StringListe="{Binding GebaeudeListe, ElementName=ZeitplanNeuUserControl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" Height="100" Width="100"/>
+                            <my:Prev_Next_Element x:Name="StockwerkElement" IstStringListe="True" StringListe="{Binding StockwerkListe, ElementName=ZeitplanNeuUserControl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" Height="100" Width="100" Margin="-100,0,0,0"/>
+                        </StackPanel>
+                        <my:Prev_Next_Element x:Name="RaumElement" IstStringListe="True" StringListe="{Binding RaumListe, ElementName=ZeitplanNeuUserControl, Mode=TwoWay}" Height="100" Width="100"/>
+                        <my:Prev_Next_Element x:Name="TemperaturElement" IstTemperatur="True" AktuellerWert="25" Height="100" Width="100" MinWert="0" MaxWert="35"/>
+                    </StackPanel>
+                </Grid>
+                
+            </GroupBox>
+            <GroupBox Header="Wochentage" Foreground="CornflowerBlue" Background="GhostWhite">
+                <StackPanel Orientation="Horizontal">
+                    <my:WochentageAuswahlElement x:Name="Wochentage" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="chb_Ganztags" IsChecked="False" Unchecked="chb_Ganztags_Unchecked" Checked="chb_Ganztags_Checked" Margin="70,10,0,0" Content="Ganztags"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Uhrzeit" Margin="0,10,0,0" Foreground="CornflowerBlue" Background="GhostWhite">
+                <StackPanel Margin="10,10,0,0" VerticalAlignment="Top" Orientation="Horizontal">
+                    <my:Prev_Next_Element x:Name="StundeVonElement" IstUhrzeit="True" IstMinute="False" AktuellerWert="0" MinWert="0" MaxWert="23" Height="100" Width="50"/>
+                    <Label Content=" : "  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
+                    <my:Prev_Next_Element x:Name="MinuteVonElement" IstUhrzeit="True" IstMinute="True" AktuellerWert="0" MinWert="0" MaxWert="59" Height="100" Width="50"/>
+                    <Label Content="          - "  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Width="100"/>
+                    <my:Prev_Next_Element x:Name="StundeBisElement" IstUhrzeit="True" IstMinute="False" AktuellerWert="0" MinWert="0" MaxWert="23" Height="100" Width="50"/>
+                    <Label Content=" : "  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
+                    <my:Prev_Next_Element x:Name="MinuteBisElement" IstUhrzeit="True" IstMinute="True" AktuellerWert="0" MinWert="0" MaxWert="59" Height="100" Width="50"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Informationen" Foreground="CornflowerBlue" Background="GhostWhite">
+                <StackPanel Margin="10,10,0,0" Height="100">
+                    <Label x:Name="lbl_UhrzeitInvalid" Visibility="Hidden" Foreground="Red" Height="0">
+                        <TextBlock>'Uhrzeit von' muss vor 'Uhrzeit bis' liegen. <LineBreak/>Bitte Korrigieren Sie die Uhrzeiten und bestätigen Sie erneut!</TextBlock>
+                    </Label>
+                    <Label x:Name="lbl_ElementInvalid" Visibility="Hidden" Foreground="Red" Height="0">
+                        <TextBlock>'Dieser Zeitplan überschneidet sich mit einem aktiven Zeitplan. <LineBreak/>Bitte Korrigieren Sie den Zeitplan oder deaktivieren Sie <LineBreak/>überschneidende Zeitpläne.</TextBlock>
+                    </Label>
+                </StackPanel>
+            </GroupBox>
+            
+            <StackPanel Height="35" Orientation="Horizontal" VerticalAlignment="Bottom" Background="GhostWhite" Margin="0,10,0,0">
+                <Button Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,0,5" Width="100" Background="LightGray" Content="Speichern" Click="Speichern_Click"/>
+                <Button Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="45,5,0,5" Width="100" Background="LightGray" Content="Löschen" Click="Löschen_Click"/>
+                <Button Height="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="45,5,0,5" Width="100" Background="LightGray" Content="Abbrechen" Click="Abbrechen_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

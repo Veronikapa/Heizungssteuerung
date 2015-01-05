@@ -78,10 +78,18 @@
     <Compile Include="UIElemente\ZeitplanUiElement.xaml.cs">
       <DependentUpon>ZeitplanUiElement.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ZeitplanNeu.xaml.cs">
-      <DependentUpon>ZeitplanNeu.xaml</DependentUpon>
+    <Compile Include="ZeitplanNeuEditieren.xaml.cs">
+      <DependentUpon>ZeitplanNeuEditieren.xaml</DependentUpon>
     </Compile>
-    <Page Include="UIElemente\Generic.xaml">
+    <Page Include="UIElemente\NextButtonStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UIElemente\PrevButtonStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UIElemente\WochentageTextBoxStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -116,7 +124,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ZeitplanNeu.xaml">
+    <Page Include="ZeitplanNeuEditieren.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -149,10 +157,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\Next_Icon.gif" />
+    <Resource Include="Icons\Next_Grau_Icon.gif" />
+    <Resource Include="Icons\Next_Schwarz_Icon.gif" />
+    <Resource Include="Icons\Prev_Schwarz_Icon.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\Prev_Icon.gif" />
+    <Resource Include="Icons\Prev_Grau_Icon.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Zurueck_Icon.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Neu_Icon.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

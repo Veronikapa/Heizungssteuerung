@@ -26,6 +26,7 @@ namespace Heizungssteuerung.Backend
         private string gebaeudeId;
         private string stockwerkId;
         private string raumId;
+        private bool ganztags;
         #endregion private
 
         #region getter/setter
@@ -262,12 +263,28 @@ namespace Heizungssteuerung.Backend
         {
             get
             {
+                if (ganztags)
+                    return "Ganztags";
+
                 string stundeVonString = stundeVon < 10 ? "0" + stundeVon.ToString() : stundeVon.ToString();
                 string minuteVonString = minuteVon < 10 ? "0" + minuteVon.ToString() : minuteVon.ToString();
                 string stundeBisString = stundeBis < 10 ? "0" + stundeBis.ToString() : stundeBis.ToString();
                 string minuteBisString = minuteBis < 10 ? "0" + minuteBis.ToString() : minuteBis.ToString();
 
                 return stundeVonString + ":" + minuteVonString + " - " + stundeBisString + ":" + minuteBisString;
+            }
+        }
+
+        public bool Ganztags
+        { 
+            get
+            {
+                return ganztags;
+            }
+
+            set
+            {
+                ganztags = value;
             }
         }
         #endregion getter/setter
@@ -284,8 +301,120 @@ namespace Heizungssteuerung.Backend
             this.gebaeudeId = gebaeudeId;
             this.stockwerkId = stockwerkId;
             this.raumId = raumId;
+            this.ganztags = false;
+        }
+        
+        //Überprüfung das sich aktivierte Zeitpläne nicht überschneiden
+        public bool AktiveZeitplaeneValidierung(List<Zeitplanelement> zeitplanElemente)
+        {
+            if (!this.aktiviert)
+                return true;
+
+            var aktiveZeitplanElemente = zeitplanElemente.Where(z => z.aktiviert).ToList();
+
+            if (aktiveZeitplanElemente.Count == 0)
+                return true;
+
+            foreach (var element in aktiveZeitplanElemente)
+            {
+                if (element != this)
+                {
+                    if (!WohneinheitGleich(element))
+                        return true;
+
+                    if (UeberpruefeZeitUeberschneidung(element))
+                        return false;
+                }
+            }
+            return true;
         }
 
-        //TODO Veronika: Überprüfung das sich aktivierte Zeitpläne nicht überschneiden
+        private bool WohneinheitGleich(Zeitplanelement element)
+        {
+            //Eines der Elemente ist auf Stockwerk Ebene --> Validierung notwendig
+            if (element.stockwerkId == String.Empty || this.stockwerkId == String.Empty)
+                return true;
+
+            //Die Elemente sind im selben Stockwerk
+            if (this.stockwerkId == element.stockwerkId)
+            {
+                //Die Elemente sind im selben Raum
+                if (this.raumId == element.raumId)
+                    return true;
+
+                //Eines der Elemente ist auf Stockwerk Ebene --> Validierung notwendig
+                else if (this.raumId == String.Empty && element.raumId != String.Empty)
+                    return true;
+
+                else if (element.raumId == String.Empty && this.raumId != String.Empty)
+                    return true;
+            }
+            return false;
+        }
+
+        private bool UeberpruefeZeitUeberschneidung(Zeitplanelement element)
+        {
+            if (ZeitUeberschneidung(element.montagAktiv, this.montagAktiv, element))
+                return true;
+
+            else if (ZeitUeberschneidung(element.dienstagAktiv, this.dienstagAktiv, element))
+                return true;
+
+            else if (ZeitUeberschneidung(element.mittwochAktiv, this.mittwochAktiv, element))
+                return true;
+
+            else if (ZeitUeberschneidung(element.donnerstagAktiv, this.donnerstagAktiv, element))
+                return true;
+
+            else if (ZeitUeberschneidung(element.freitagAktiv, this.freitagAktiv, element))
+                return true;
+
+            else if (ZeitUeberschneidung(element.samstagAktiv, this.samstagAktiv, element))
+                return true;
+
+            else if (ZeitUeberschneidung(element.sonntagAktiv, this.sonntagAktiv, element))
+                return true;
+
+            else
+                return false;
+        }
+
+        private bool ZeitUeberschneidung(bool tagElementAktiv, bool tagThisAktiv, Zeitplanelement element)
+        {
+            if (tagElementAktiv && tagThisAktiv)
+            {
+                if (element.Ganztags || this.ganztags)
+                    return true;
+
+                var zeitVonElement = new DateTime(1, 1, 1, element.stundeVon, element.minuteVon, 0);
+                var zeitBisElement = new DateTime(1, 1, 1, element.stundeBis, element.minuteBis, 0);
+                var zeitVonThis = new DateTime(1, 1, 1, this.stundeVon, this.minuteVon, 0);
+                var zeitBisThis = new DateTime(1, 1, 1, this.stundeBis, this.minuteBis, 0);
+
+                //this Zeit zwischen Element Zeit
+                if (ZeitZwischenStartEnde(zeitVonThis.TimeOfDay, zeitVonElement.TimeOfDay, zeitBisElement.TimeOfDay))
+                    return true;
+
+                else if (ZeitZwischenStartEnde(zeitBisThis.TimeOfDay, zeitVonElement.TimeOfDay, zeitBisElement.TimeOfDay))
+                    return true;
+
+               //Element Zeit zwischen this Zeit
+                else if (ZeitZwischenStartEnde(zeitVonElement.TimeOfDay, zeitVonThis.TimeOfDay, zeitBisThis.TimeOfDay))
+                    return true;
+
+                else if (ZeitZwischenStartEnde(zeitBisElement.TimeOfDay, zeitVonThis.TimeOfDay, zeitBisThis.TimeOfDay))
+                    return true;
+            }
+            return false;
+        }
+
+        private bool ZeitZwischenStartEnde(TimeSpan timeToCheck, TimeSpan start, TimeSpan end)
+        {
+            // see if start comes before end
+            if (start < end)
+                return start <= timeToCheck && timeToCheck <= end;
+            // start is after end, so do the inverse comparison
+            return !(end < timeToCheck && timeToCheck < start);
+        }
     }
 }
