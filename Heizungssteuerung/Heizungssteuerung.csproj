@@ -66,6 +66,9 @@
     <Compile Include="Backend\WindowExtensions.cs" />
     <Compile Include="Backend\Wohneinheit.cs" />
     <Compile Include="Backend\Raum.cs" />
+    <Compile Include="MainTemperaturEinstellen.xaml.cs">
+      <DependentUpon>MainTemperaturEinstellen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainZeitplan.xaml.cs">
       <DependentUpon>MainZeitplan.xaml</DependentUpon>
     </Compile>
@@ -75,12 +78,19 @@
     <Compile Include="UIElemente\WochentageAuswahlElement.xaml.cs">
       <DependentUpon>WochentageAuswahlElement.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UIElemente\WohneinheitUiElement.xaml.cs">
+      <DependentUpon>WohneinheitUiElement.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UIElemente\ZeitplanUiElement.xaml.cs">
       <DependentUpon>ZeitplanUiElement.xaml</DependentUpon>
     </Compile>
     <Compile Include="ZeitplanNeuEditieren.xaml.cs">
       <DependentUpon>ZeitplanNeuEditieren.xaml</DependentUpon>
     </Compile>
+    <Page Include="MainTemperaturEinstellen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UIElemente\NextButtonStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -119,6 +129,10 @@
     <Page Include="UIElemente\WochentageAuswahlElement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIElemente\WohneinheitUiElement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UIElemente\ZeitplanUiElement.xaml">
       <SubType>Designer</SubType>
@@ -169,6 +183,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\Neu_Icon.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Flamme.gif" />
+    <Resource Include="Icons\Schneeflocke.gif" />
+    <Resource Include="Icons\Thermometer.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

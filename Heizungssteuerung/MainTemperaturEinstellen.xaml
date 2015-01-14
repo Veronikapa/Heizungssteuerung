@@ -10,7 +10,7 @@
             </Button>
         </StackPanel>
         <TreeView x:Name="temperaturPanel" Margin="0,25,0,0">
-           
+          
         </TreeView>
     </Grid>
 </Window>

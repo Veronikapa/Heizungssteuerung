@@ -43,7 +43,6 @@ namespace Heizungssteuerung
 
             this.Loaded += MainTemperaturEinstellen_Loaded;
         }
-      
 
 
         void MainTemperaturEinstellen_Loaded(object sender, RoutedEventArgs e)

@@ -46,7 +46,7 @@ namespace Heizungssteuerung.Backend
             set
             {
                 zielTemperatur = value;
-                ZielTemperaturChanged();
+                ZielTemperaturChanged(true);
             }
         }
 
@@ -74,24 +74,25 @@ namespace Heizungssteuerung.Backend
         {
             zielTemperatur++;
 
-            ZielTemperaturChanged();
+            ZielTemperaturChanged(false);
         }
 
         public override void ZielTemperaturVerringern()
         {
             zielTemperatur--;
 
-            ZielTemperaturChanged();
+            ZielTemperaturChanged(false);
         }
 
-        public void ZielTemperaturChanged()
+        public void ZielTemperaturChanged(bool fromSetter)
         {
             foreach (Raum r in RaumListe)
             {
                 r.ZielTemperatur = zielTemperatur;
             }
 
-            gebaeude.ZielTemperaturAnpassen();
+            if (!fromSetter)
+                gebaeude.ZielTemperaturAnpassen();
         }
 
         public void ZielTemperaturAnpassen()
