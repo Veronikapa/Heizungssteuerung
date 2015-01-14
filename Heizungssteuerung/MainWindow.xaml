@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Heizungsregler" Height="600" Width="420" HorizontalAlignment="Center" VerticalAlignment="Center" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button Content="Aktuelle Temperatur" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Height="100" Margin="60,60,0,0"/>
+        <Button Content="Aktuelle Temperatur" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Height="100" Margin="60,60,0,0" Click="Temperatur_Click"/>
         <Button Content="Fensterstatus prüfen" HorizontalAlignment="Left" Margin="60,235,0,0" VerticalAlignment="Top" Width="300" Height="100"/>
         <Button Content="Zeitplan" HorizontalAlignment="Left" Margin="60,410,0,0" VerticalAlignment="Top" Width="300" Height="100" Click="Zeitplan_Click"/>
     </Grid>

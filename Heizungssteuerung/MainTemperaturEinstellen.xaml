@@ -1,0 +1,16 @@
+﻿<Window x:Class="Heizungssteuerung.MainTemperaturEinstellen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:h="clr-namespace:Heizungssteuerung"
+        Title="Temperatur einstellen" Height="600" Width="420" x:Name="_this" Background="White" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel Height="25" VerticalAlignment="Top" Orientation="Horizontal" Background="GhostWhite">
+            <Button Height="25" Width="30" HorizontalAlignment="Left" PreviewMouseDown="Zurück_MouseDown" Background="Transparent" BorderThickness="0">
+                <Image Source="pack://application:,,,/Icons/Zurueck_Icon.gif"/>
+            </Button>
+        </StackPanel>
+        <TreeView x:Name="temperaturPanel" Margin="0,25,0,0">
+           
+        </TreeView>
+    </Grid>
+</Window>

@@ -8,17 +8,38 @@ namespace Heizungssteuerung.Backend
 {
     public abstract class Wohneinheit
     {
+        private static int GRENZE_FROST = 0;
+        private static int GRENZE_FEUER = 40;
+
         protected int aktuelleTemperatur;
         protected int letzteTemperatur; // Temperatur vor Zeitplan
         protected int zielTemperatur;
 
+        protected string wohneinheitId;
+
         //TODO Dominik: Icon- Werte für Frost, Feuer etc. definieren
+
+        public string WohneinheitId
+        {
+            get
+            {
+                return wohneinheitId;
+            }
+            set
+            {
+                wohneinheitId = value;
+            }
+        }
 
         public int AktuelleTemperatur
         {
             get
             {
                 return aktuelleTemperatur;
+            }
+            set
+            {
+                aktuelleTemperatur = value;
             }
         }
 
@@ -28,13 +49,21 @@ namespace Heizungssteuerung.Backend
             {
                 return letzteTemperatur;
             }
+            set
+            {
+                letzteTemperatur = value;
+            }
         }
 
-        public int ZielTemperatur
+        public virtual int ZielTemperatur
         {
             get
             {
                 return zielTemperatur;
+            }
+            set
+            {
+                zielTemperatur = value;
             }
         }
 
@@ -47,5 +76,15 @@ namespace Heizungssteuerung.Backend
         {
             zielTemperatur--;
         }
+
+        public virtual void TemperaturenAktualisieren()
+        {
+            letzteTemperatur = aktuelleTemperatur;
+            aktuelleTemperatur = zielTemperatur;
+        }
+
+        public abstract int AnzahlGeschlosseneFenster();
+
+        public abstract int AnzahlFenster();
     }
 }

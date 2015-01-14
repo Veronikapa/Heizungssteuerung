@@ -21,7 +21,7 @@ namespace Heizungssteuerung
     /// </summary>
     public partial class MainWindow : Window
     {
-        Gebaeude gebauede;
+        Gebaeude gebaeude;
 
         public MainWindow()
         {
@@ -31,16 +31,17 @@ namespace Heizungssteuerung
 
         private void InitialisiereGebeaude()
         {
-            List<Stockwerk> stockwerkListe = new List<Stockwerk>();
-            stockwerkListe.Add(new Stockwerk("Stockwerk1",25,InitialisiereRaumListeStockwerk1()));
-            stockwerkListe.Add(new Stockwerk("Stockwerk2", 25, InitialisiereRaumListeStockwerk2()));
+            gebaeude = new Gebaeude("Haus", 25);
 
-            gebauede = new Gebaeude("Haus", 25, stockwerkListe);
+            gebaeude.StockwerkHinzufuegen(InitialisiereRaumListeStockwerk1(gebaeude));
+            gebaeude.StockwerkHinzufuegen(InitialisiereRaumListeStockwerk2(gebaeude));
         }
 
         #region InitialisiereRaumListeStockwerk1
-        private List<Raum> InitialisiereRaumListeStockwerk1()
+        private Stockwerk InitialisiereRaumListeStockwerk1(Gebaeude gebaeude)
         {
+            Stockwerk stock = new Stockwerk("Stockwerk1", 25, gebaeude);
+
             List<Fenster> fensterListeBad1 = new List<Fenster>();
             fensterListeBad1.Add(new Fenster("Fenster1", true));
 
@@ -61,20 +62,21 @@ namespace Heizungssteuerung
             List<Fenster> fensterListeBuero = new List<Fenster>();
             fensterListeBuero.Add(new Fenster("Fenster1", true));
 
-            List<Raum> raumListeStockwerk1 = new List<Raum>();
-            raumListeStockwerk1.Add(new Raum("Bad1", 25, fensterListeBad1));
-            raumListeStockwerk1.Add(new Raum("Vorraum1", 25, fensterListeVorraum1));
-            raumListeStockwerk1.Add(new Raum("Küche", 25, fensterListeKueche));
-            raumListeStockwerk1.Add(new Raum("Wohnzimmer", 25, fensterListeWohnzimmer));
-            raumListeStockwerk1.Add(new Raum("Büro", 25, fensterListeBuero));
+            stock.RaumHinzufuegen(new Raum("Bad1", 25, fensterListeBad1, stock));
+            stock.RaumHinzufuegen(new Raum("Vorraum1", 25, fensterListeVorraum1, stock));
+            stock.RaumHinzufuegen(new Raum("Küche", 25, fensterListeKueche, stock));
+            stock.RaumHinzufuegen(new Raum("Wohnzimmer", 25, fensterListeWohnzimmer, stock));
+            stock.RaumHinzufuegen(new Raum("Büro", 25, fensterListeBuero, stock));
 
-            return raumListeStockwerk1;
+            return stock;
         }
         #endregion InitialisiereRaumListeStockwerk1
 
         #region InitialisiereRaumListeStockwerk2
-        private List<Raum> InitialisiereRaumListeStockwerk2()
+        private Stockwerk InitialisiereRaumListeStockwerk2(Gebaeude gebaeude)
         {
+            Stockwerk stock = new Stockwerk("Stockwerk2", 25, gebaeude);
+
             List<Fenster> fensterListeBad2 = new List<Fenster>();
             fensterListeBad2.Add(new Fenster("Fenster1", true));
             fensterListeBad2.Add(new Fenster("Fenster2", false));
@@ -95,26 +97,40 @@ namespace Heizungssteuerung
             fensterListeSchlafzimmer3.Add(new Fenster("Fenster1", true));
             fensterListeSchlafzimmer3.Add(new Fenster("Fenster2", false));
 
-            List<Raum> raumListeStockwerk2 = new List<Raum>();
-            raumListeStockwerk2.Add(new Raum("Bad2", 25, fensterListeBad2));
-            raumListeStockwerk2.Add(new Raum("Vorraum2", 25, fensterListeBad2));
-            raumListeStockwerk2.Add(new Raum("Schlafzimmer1", 25, fensterListeSchlafzimmer1));
-            raumListeStockwerk2.Add(new Raum("Schlafzimmer2", 25, fensterListeSchlafzimmer2));
-            raumListeStockwerk2.Add(new Raum("Schlafzimmer3", 25, fensterListeSchlafzimmer3));
+            stock.RaumHinzufuegen(new Raum("Bad2", 25, fensterListeBad2, stock));
+            stock.RaumHinzufuegen(new Raum("Vorraum2", 25, fensterListeBad2, stock));
+            stock.RaumHinzufuegen(new Raum("Schlafzimmer1", 25, fensterListeSchlafzimmer1, stock));
+            stock.RaumHinzufuegen(new Raum("Schlafzimmer2", 25, fensterListeSchlafzimmer2, stock));
+            stock.RaumHinzufuegen(new Raum("Schlafzimmer3", 25, fensterListeSchlafzimmer3, stock));
 
-            return raumListeStockwerk2;
+            return stock;
         }
         #endregion InitialisiereRaumListeStockwerk1
 
         private void Zeitplan_Click(object sender, RoutedEventArgs e)
         {
             this.Visibility = System.Windows.Visibility.Hidden;
-            MainZeitplan zeitplan = new MainZeitplan(gebauede);
+            MainZeitplan zeitplan = new MainZeitplan(gebaeude);
             zeitplan.Closed += zeitplan_Closed;
             zeitplan.Show();
         }
 
         void zeitplan_Closed(object sender, EventArgs e)
+        {
+            this.Visibility = System.Windows.Visibility.Visible;
+        }
+
+        private void Temperatur_Click(object sender, RoutedEventArgs e)
+        {
+            gebaeude.TemperaturenAktualisieren();
+
+            this.Visibility = System.Windows.Visibility.Hidden;
+            MainTemperaturEinstellen temperatur = new MainTemperaturEinstellen(gebaeude);
+            temperatur.Closed += temperatur_Closed;
+            temperatur.Show();
+        }
+
+        void temperatur_Closed(object sender, EventArgs e)
         {
             this.Visibility = System.Windows.Visibility.Visible;
         }
