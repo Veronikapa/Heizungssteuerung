@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\
+C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\
 Heizungssteuerung
 none
 false
 DEBUG;TRACE
-D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\App.xaml
-9-430763083
+C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\App.xaml
+12135364127
 
-21395359427
-15-2090351965
-UIElemente\NextButtonStyle.xaml;UIElemente\PrevButtonStyle.xaml;UIElemente\WochentageTextBoxStyle.xaml;MainWindow.xaml;MainZeitplan.xaml;UIElemente\Prev_Next_Element.xaml;UIElemente\WochentageAuswahlElement.xaml;UIElemente\ZeitplanUiElement.xaml;ZeitplanNeuEditieren.xaml;
+24171808414
+15-1071086949
+MainFensterstatusPruefen.xaml;MainTemperaturEinstellen.xaml;UIElemente\NextButtonStyle.xaml;UIElemente\PrevButtonStyle.xaml;UIElemente\WochentageTextBoxStyle.xaml;MainWindow.xaml;MainZeitplan.xaml;UIElemente\Prev_Next_Element.xaml;UIElemente\WochentageAuswahlElement.xaml;UIElemente\WohneinheitUiElement.xaml;UIElemente\ZeitplanUiElement.xaml;ZeitplanNeuEditieren.xaml;
 
-True
+False
 

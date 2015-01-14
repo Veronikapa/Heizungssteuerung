@@ -66,6 +66,9 @@
     <Compile Include="Backend\WindowExtensions.cs" />
     <Compile Include="Backend\Wohneinheit.cs" />
     <Compile Include="Backend\Raum.cs" />
+    <Compile Include="MainFensterstatusPruefen.xaml.cs">
+      <DependentUpon>MainFensterstatusPruefen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainTemperaturEinstellen.xaml.cs">
       <DependentUpon>MainTemperaturEinstellen.xaml</DependentUpon>
     </Compile>
@@ -87,6 +90,10 @@
     <Compile Include="ZeitplanNeuEditieren.xaml.cs">
       <DependentUpon>ZeitplanNeuEditieren.xaml</DependentUpon>
     </Compile>
+    <Page Include="MainFensterstatusPruefen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainTemperaturEinstellen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

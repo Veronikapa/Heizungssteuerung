@@ -134,5 +134,19 @@ namespace Heizungssteuerung
         {
             this.Visibility = System.Windows.Visibility.Visible;
         }
+
+        private void Fenster_Click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = System.Windows.Visibility.Hidden;
+            MainFensterstatusPruefen fensterPruefen = new MainFensterstatusPruefen(gebaeude);
+            fensterPruefen.Closed += fensterPruefen_Closed;
+            fensterPruefen.Show();
+
+        }
+
+        void fensterPruefen_Closed(object sender, EventArgs e)
+        {
+            this.Visibility = System.Windows.Visibility.Visible;
+        }
     }
 }

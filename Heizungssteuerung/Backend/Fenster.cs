@@ -11,7 +11,7 @@ namespace Heizungssteuerung.Backend
         private string fensterId;
         private bool geschlossen;
 
-        public string FensterID
+        public string FensterId
         {
             get
             {

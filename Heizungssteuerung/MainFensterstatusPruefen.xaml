@@ -1,0 +1,56 @@
+﻿<Window x:Class="Heizungssteuerung.MainFensterstatusPruefen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Fensterstatus prüfen" Height="700" Width="500" x:Name= "MainFensterStatusPruefenWindow" >
+    
+    <Grid>
+        <StackPanel Height="25" VerticalAlignment="Top" Orientation="Horizontal" Background="GhostWhite">
+            <Button Height="25" Width="30" HorizontalAlignment="Left" PreviewMouseDown="Zurück_MouseDown" Background="Transparent" BorderThickness="0">
+                <Image Source="pack://application:,,,/Icons/Zurueck_Icon.gif"/>
+            </Button>
+        </StackPanel>
+        
+        <StackPanel x:Name="FensterstatusPanel" Margin="0,25,0,0" Orientation="Vertical">
+            <Grid HorizontalAlignment="Left" Height="51" Width="492">
+                <RadioButton Content="Alle Fenster anzeigen" HorizontalAlignment="Left" Height="48" Margin="0,3,0,0" VerticalAlignment="Top" Width="159" IsChecked="True"/>
+                <RadioButton Content="Offene Fenster anzeigen" HorizontalAlignment="Left" Height="48" Margin="164,3,0,0" VerticalAlignment="Top" Width="161"/>
+                <RadioButton Content="Geschlossene Fenster anzeigen" HorizontalAlignment="Left" Height="48" Margin="333,3,0,0" VerticalAlignment="Top" Width="159"/>
+            </Grid>
+            
+            <Grid HorizontalAlignment="Left" Height="586" Width="472" Margin="10,0,0,0">
+
+                <TreeView x:Name="fensterStatus" ItemsSource ="{Binding GebaeudeListe, Mode=TwoWay, ElementName=MainFensterStatusPruefenWindow}" Height="427" Margin="10,3,10,0" VerticalAlignment="Top" >
+                    <TreeView.ItemTemplate>
+                        <!--Gebäude Template-->
+                        <HierarchicalDataTemplate  ItemsSource="{Binding StockwerkListe}">
+                            <TextBlock Text="{Binding GebaeudeId}" />
+                            <!--StockwerkTemplate-->
+
+                            <HierarchicalDataTemplate.ItemTemplate>
+                                <HierarchicalDataTemplate ItemsSource="{Binding RaumListe }">
+                                    <TextBlock Text="{Binding StockwerkId}" />
+
+                                    <HierarchicalDataTemplate.ItemTemplate>
+                                        <HierarchicalDataTemplate ItemsSource="{Binding FensterListe }">
+                                            <TextBlock Text="{Binding RaumId}" />
+
+
+                                            <!--Raumliste-->
+                                            <HierarchicalDataTemplate.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding FensterId}" />
+                                                </DataTemplate>
+                                            </HierarchicalDataTemplate.ItemTemplate>
+                                        </HierarchicalDataTemplate>
+                                    </HierarchicalDataTemplate.ItemTemplate>
+                                </HierarchicalDataTemplate>
+                            </HierarchicalDataTemplate.ItemTemplate>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </Grid>
+
+
+        </StackPanel>
+    </Grid>
+</Window>
