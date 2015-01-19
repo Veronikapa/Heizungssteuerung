@@ -26,15 +26,13 @@ D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\
 D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\UIElemente\NextButtonStyle.baml
 D:\Uni\Semester 3_Informatik & Infomgmt\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\UIElemente\PrevButtonStyle.baml
 C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\bin\Debug\Heizungssteuerung.exe.config
-C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\Heizungssteuerung.exe
-C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\Heizungssteuerung.pdb
 C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\bin\Debug\Heizungssteuerung.exe
 C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\bin\Debug\Heizungssteuerung.pdb
-C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\Heizungssteuerung.csprojResolveAssemblyReference.cache
 C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\UIElemente\NextButtonStyle.baml
 C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\UIElemente\PrevButtonStyle.baml
 C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\UIElemente\WochentageTextBoxStyle.baml
 C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\MainWindow.baml
+C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\MainFensterstatusPruefen.g.cs
 C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\MainTemperaturEinstellen.g.cs
 C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\MainWindow.g.cs
 C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\MainZeitplan.g.cs
@@ -47,6 +45,7 @@ C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt
 C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\Heizungssteuerung_MarkupCompile.cache
 C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\Heizungssteuerung_MarkupCompile.lref
+C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\MainFensterstatusPruefen.baml
 C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\MainTemperaturEinstellen.baml
 C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\MainZeitplan.baml
 C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\UIElemente\Prev_Next_Element.baml
@@ -57,5 +56,5 @@ C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt
 C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\Heizungssteuerung.g.resources
 C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\Heizungssteuerung.Properties.Resources.resources
 C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\Heizungssteuerung.csproj.GenerateResource.Cache
-C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\MainFensterStatusPruefen.g.cs
-C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\MainFensterStatusPruefen.baml
+C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\Heizungssteuerung.exe
+C:\Users\Alice Eberhard\UNI\3.SEM\3. sem\Interaktive Systeme\PR\Abschlussprojekt\Heizungssteuerung\Heizungssteuerung\obj\Debug\Heizungssteuerung.pdb

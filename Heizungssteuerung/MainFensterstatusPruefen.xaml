@@ -1,25 +1,40 @@
 ﻿<Window x:Class="Heizungssteuerung.MainFensterstatusPruefen"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Heizungssteuerung.Backend"
+       
         Title="Fensterstatus prüfen" Height="700" Width="500" x:Name= "MainFensterStatusPruefenWindow" >
-    
+
     <Grid>
         <StackPanel Height="25" VerticalAlignment="Top" Orientation="Horizontal" Background="GhostWhite">
             <Button Height="25" Width="30" HorizontalAlignment="Left" PreviewMouseDown="Zurück_MouseDown" Background="Transparent" BorderThickness="0">
                 <Image Source="pack://application:,,,/Icons/Zurueck_Icon.gif"/>
             </Button>
         </StackPanel>
-        
-        <StackPanel x:Name="FensterstatusPanel" Margin="0,25,0,0" Orientation="Vertical">
-            <Grid HorizontalAlignment="Left" Height="51" Width="492">
-                <RadioButton Content="Alle Fenster anzeigen" HorizontalAlignment="Left" Height="48" Margin="0,3,0,0" VerticalAlignment="Top" Width="159" IsChecked="True"/>
-                <RadioButton Content="Offene Fenster anzeigen" HorizontalAlignment="Left" Height="48" Margin="164,3,0,0" VerticalAlignment="Top" Width="161"/>
-                <RadioButton Content="Geschlossene Fenster anzeigen" HorizontalAlignment="Left" Height="48" Margin="333,3,0,0" VerticalAlignment="Top" Width="159"/>
-            </Grid>
-            
-            <Grid HorizontalAlignment="Left" Height="586" Width="472" Margin="10,0,0,0">
 
-                <TreeView x:Name="fensterStatus" ItemsSource ="{Binding GebaeudeListe, Mode=TwoWay, ElementName=MainFensterStatusPruefenWindow}" Height="427" Margin="10,3,10,0" VerticalAlignment="Top" >
+        <StackPanel x:Name="FensterstatusPanel" Margin="0,25,0,0" Orientation="Vertical">
+
+            <Grid HorizontalAlignment="Left" Height="57" Width="492" Background="AliceBlue">
+
+                <RadioButton x:Name="rdbtbn_alle"  HorizontalAlignment="Left" Margin="18,11,0,7" Width="109" Background="AliceBlue" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock x:Name="alleFenster" TextWrapping="Wrap" TextAlignment="Center" Height="38" Width="87" HorizontalAlignment="Center" VerticalAlignment="Center" ><Run Text="Alle Fenster "/><LineBreak/><Run Text="Anzeigen"/></TextBlock>
+                </RadioButton>
+                <RadioButton x:Name="rdbtn_offen" HorizontalAlignment="Left" Height="37" Margin="171,13,0,0" VerticalAlignment="Top" Width="146">
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" Height="37" Width="97"><Run Text="Offene Fenster "/><LineBreak/><Run Text="anzeigen"/></TextBlock>
+                </RadioButton>
+                <RadioButton x:Name="rdbtn_zu" HorizontalAlignment="Left" Height="34" Margin="335,13,0,0" VerticalAlignment="Top" Width="147" >
+                    <TextBlock  Text="Geschlossene Fenster anzeigen" TextWrapping="Wrap" TextAlignment="Center" Width="128"/>
+                </RadioButton>
+            </Grid>
+
+            <Grid HorizontalAlignment="Left" Height="586" Width="472" Margin="10,0,0,0">
+                <Grid.Resources>
+                    <local:BoolConverter x:Key="BoolConverter" Reverse="False" />
+                    <local:BoolConverter x:Key="BoolConverterReverse" Reverse="True" />
+                </Grid.Resources>
+
+
+                <TreeView x:Name="fensterStatus" ItemsSource ="{Binding GebaeudeListe, ElementName=MainFensterStatusPruefenWindow, Mode=TwoWay}" Height="566" Margin="0,0,0,10" VerticalAlignment="Bottom" >
                     <TreeView.ItemTemplate>
                         <!--Gebäude Template-->
                         <HierarchicalDataTemplate  ItemsSource="{Binding StockwerkListe}">
@@ -27,18 +42,35 @@
                             <!--StockwerkTemplate-->
 
                             <HierarchicalDataTemplate.ItemTemplate>
-                                <HierarchicalDataTemplate ItemsSource="{Binding RaumListe }">
+                                <HierarchicalDataTemplate ItemsSource="{Binding RaumListe}">
                                     <TextBlock Text="{Binding StockwerkId}" />
 
                                     <HierarchicalDataTemplate.ItemTemplate>
-                                        <HierarchicalDataTemplate ItemsSource="{Binding FensterListe }">
-                                            <TextBlock Text="{Binding RaumId}" />
-
+                                        <HierarchicalDataTemplate ItemsSource="{Binding FensterListe}">
+                                            <TextBlock Text="{Binding RaumId}" /> 
 
                                             <!--Raumliste-->
                                             <HierarchicalDataTemplate.ItemTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock Text="{Binding FensterId}" />
+                                                    <TextBlock Text="{Binding FensterId}" >
+                                                        <TextBlock.Style>
+                                                            <Style>
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding IsChecked, ElementName=rdbtn_zu}" Value="True">
+                                                                        <Setter Property= "TextBlock.Visibility" Value="{Binding Path= Geschlossen, Converter={StaticResource BoolConverter}}" />
+                                                                    </DataTrigger>
+                                                                    <DataTrigger Binding="{Binding IsChecked, ElementName=rdbtn_offen}" Value="True">
+                                                                        <Setter Property="TextBlock.Visibility" Value="{Binding Path=Geschlossen,Converter={StaticResource BoolConverterReverse}}" />
+                                                                    </DataTrigger>
+                                                                    <DataTrigger Binding="{Binding IsChecked, ElementName=rdbtn_alle}" Value="True">
+                                                                        <Setter Property="TextBlock.Visibility" Value="Visible"/>
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+
+                                                    <!--Visiblity="{Binding Geschlossen, ElementName-->
                                                 </DataTemplate>
                                             </HierarchicalDataTemplate.ItemTemplate>
                                         </HierarchicalDataTemplate>
@@ -47,8 +79,21 @@
                             </HierarchicalDataTemplate.ItemTemplate>
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>
+                    <TreeView.ItemContainerStyle>
+                        <Style TargetType="{x:Type TreeViewItem}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Geschlossen}" Value="True">
+                                    <Setter Property="Background" Value="#FFF7D7D7"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Geschlossen}" Value="False">
+                                    <Setter Property="Background" Value="#FFDFFBB4"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TreeView.ItemContainerStyle>
                 </TreeView>
             </Grid>
+
 
 
         </StackPanel>

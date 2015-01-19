@@ -62,6 +62,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Backend\BoolConverter.cs" />
     <Compile Include="Backend\Gebaeude.cs" />
     <Compile Include="Backend\WindowExtensions.cs" />
     <Compile Include="Backend\Wohneinheit.cs" />

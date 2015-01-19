@@ -24,8 +24,9 @@ namespace Heizungssteuerung
     public partial class MainFensterstatusPruefen : Window, INotifyPropertyChanged
     {
         private Gebaeude Gebaeude;
-        private List<Stockwerk> stockwerke;
-
+        private IEnumerable<Gebaeude> gebaeudeListe;
+        
+    
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {
@@ -33,7 +34,8 @@ namespace Heizungssteuerung
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private IEnumerable<Gebaeude> gebaeudeListe;
+
+
         public IEnumerable<Gebaeude> GebaeudeListe
         {
             get
@@ -47,9 +49,8 @@ namespace Heizungssteuerung
                 OnPropertyChanged("GebaeudeListe");
             }
         }
-
-        
-
+      
+    
         public MainFensterstatusPruefen(Gebaeude g)
         {
             InitializeComponent();
@@ -57,15 +58,20 @@ namespace Heizungssteuerung
             this.Gebaeude = g;
             
             
+
+
         }
         void MainFensterstatusPruefen_Loaded(object sender, RoutedEventArgs e)
         {
             GebaeudeListe = new List<Gebaeude>() { Gebaeude };
+            
+
         }
 
         private void Zurück_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
-        }
+    
+            }
     }
 }

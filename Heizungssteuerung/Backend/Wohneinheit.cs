@@ -86,5 +86,6 @@ namespace Heizungssteuerung.Backend
         public abstract int AnzahlGeschlosseneFenster();
 
         public abstract int AnzahlFenster();
+     
     }
 }

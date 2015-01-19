@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Heizungssteuerung.Backend
 {
-    public class Raum: Wohneinheit
+    public class Raum : Wohneinheit
     {
         private Stockwerk stockwerk;
         private string raumId;
@@ -74,6 +74,6 @@ namespace Heizungssteuerung.Backend
             return fensterListe.Count;
         }
         // TODO Dominik: Methode die Anzahl der geschlossenen Fenster zurückgibt - DONE
-
+        
     }
 }
