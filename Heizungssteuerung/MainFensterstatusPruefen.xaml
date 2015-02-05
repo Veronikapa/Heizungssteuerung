@@ -4,7 +4,7 @@
         xmlns:local="clr-namespace:Heizungssteuerung.Backend"
        
         Title="Fensterstatus prüfen" Height="700" Width="500" x:Name= "MainFensterStatusPruefenWindow" >
-
+    <!--Leiste mit zurück Button-->
     <Grid>
         <StackPanel Height="25" VerticalAlignment="Top" Orientation="Horizontal" Background="GhostWhite">
             <Button Height="25" Width="30" HorizontalAlignment="Left" PreviewMouseDown="Zurück_MouseDown" Background="Transparent" BorderThickness="0">
@@ -12,11 +12,10 @@
             </Button>
         </StackPanel>
 
+        <!--Die 3 Radiobuttons-->
         <StackPanel x:Name="FensterstatusPanel" Margin="0,25,0,0" Orientation="Vertical">
-
             <Grid HorizontalAlignment="Left" Height="57" Width="492" Background="AliceBlue">
-
-                <RadioButton x:Name="rdbtbn_alle"  HorizontalAlignment="Left" Margin="18,11,0,7" Width="109" Background="AliceBlue" RenderTransformOrigin="0.5,0.5">
+                <RadioButton x:Name="rdbtbn_alle"  HorizontalAlignment="Left" Margin="18,11,0,7" Width="109" Background="AliceBlue" RenderTransformOrigin="0.5,0.5" IsChecked="True">
                     <TextBlock x:Name="alleFenster" TextWrapping="Wrap" TextAlignment="Center" Height="38" Width="87" HorizontalAlignment="Center" VerticalAlignment="Center" ><Run Text="Alle Fenster "/><LineBreak/><Run Text="Anzeigen"/></TextBlock>
                 </RadioButton>
                 <RadioButton x:Name="rdbtn_offen" HorizontalAlignment="Left" Height="37" Margin="171,13,0,0" VerticalAlignment="Top" Width="146">
@@ -27,50 +26,191 @@
                 </RadioButton>
             </Grid>
 
+
+            <!--Resourcen für Treeview wie Fensterbilder, Converter-->
             <Grid HorizontalAlignment="Left" Height="586" Width="472" Margin="10,0,0,0">
                 <Grid.Resources>
                     <local:BoolConverter x:Key="BoolConverter" Reverse="False" />
                     <local:BoolConverter x:Key="BoolConverterReverse" Reverse="True" />
+                    <BitmapImage x:Key="Icon_Fenster_offen" UriSource="pack://application:,,,/Icons/fenster_offen.png"/>
+                    <BitmapImage x:Key="Icon_Fenster_zu" UriSource="pack://application:,,,/Icons/Fenster_zu.png"/>
+                   
+                    <!--Style Vorlage für Icons-->
+                    <Style x:Key="IconImageStyleSmall" TargetType="Image">
+                        <Setter Property="MaxWidth" Value="18"/>
+                        <Setter Property="MaxHeight" Value="18"/>
+                        <Setter Property="Margin" Value="2"/>
+                    </Style>
+  
+
+                    <!--Style für Toggle Button-->
+                    <Style x:Key ="ExpanderStyle" TargetType="{x:Type ToggleButton}">
+                        <Setter Property="Focusable" Value="False"/>
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Setter Property="Width" Value="28"/>
+                        <Setter Property="Height" Value="28"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                    <Image x:Name="ExpandImg" Source=" pack://application:,,,/Icons/Plus_icon.png"/>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property ="IsChecked" Value="True">
+                                            <Setter Property="Source"  TargetName="ExpandImg" Value="pack://application:,,,/Icons/Minus_icon.png"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>      
+                    </Style>
+                    
+                    <!--Style für TreeviewItems-->
+                    <Style x:Key="styleTreeView" TargetType="{x:Type TreeViewItem}">
+                        <Setter Property="IsExpanded" Value="True" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type TreeViewItem}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition MinWidth="19" Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <ToggleButton x:Name="Expander" Grid.Column="0" Style="{StaticResource ExpanderStyle}" IsChecked="{Binding Path=IsExpanded,RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press" Width="16" Height="16"/>
+                                        <ContentPresenter x:Name="PART_Header" Grid.Column="1" ContentSource="Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                                        <ItemsPresenter x:Name="ItemsHost" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsExpanded" Value="false">
+                                            <Setter TargetName="ItemsHost" Property="Visibility" Value="Collapsed"/>
+                                        </Trigger>
+                                        <Trigger Property="HasItems" Value="false">
+                                            <Setter TargetName="Expander" Property="Visibility" Value="Hidden"/>
+                                        </Trigger>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="HasHeader" Value="false"/>
+                                                <Condition Property="Width" Value="Auto"/>
+                                            </MultiTrigger.Conditions>
+                                            <Setter TargetName="PART_Header" Property="MinWidth" Value="75"/>
+                                        </MultiTrigger>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="HasHeader" Value="false"/>
+                                                <Condition Property="Height" Value="Auto"/>
+                                            </MultiTrigger.Conditions>
+                                            <Setter TargetName="PART_Header" Property="MinHeight" Value="19"/>
+                                        </MultiTrigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
                 </Grid.Resources>
 
-
-                <TreeView x:Name="fensterStatus" ItemsSource ="{Binding GebaeudeListe, ElementName=MainFensterStatusPruefenWindow, Mode=TwoWay}" Height="566" Margin="0,0,0,10" VerticalAlignment="Bottom" >
+                <!--Anfang Treeview-->
+                <TreeView x:Name="fensterStatus"  ItemsSource ="{Binding GebaeudeListe, ElementName=MainFensterStatusPruefenWindow, Mode=TwoWay}" Height="566" Margin="0,0,0,10" VerticalAlignment="Bottom" ItemContainerStyle="{StaticResource styleTreeView}"  >
+                  
+                    <!--Templates für das Aussehen der Treeview Elemente-->
                     <TreeView.ItemTemplate>
-                        <!--Gebäude Template-->
-                        <HierarchicalDataTemplate  ItemsSource="{Binding StockwerkListe}">
-                            <TextBlock Text="{Binding GebaeudeId}" />
-                            <!--StockwerkTemplate-->
 
+                        <!--Gebäude Liste-->
+                        <HierarchicalDataTemplate  ItemsSource="{Binding StockwerkListe}">
+                            <Border Width="150" BorderBrush="#FF062174"
+                                      Background="#FF061F6C" BorderThickness="1" CornerRadius="2" Margin="2" Padding="2">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding GebaeudeId}" FontSize="18" FontWeight="Bold"  Foreground="White"/>
+                                </StackPanel>
+                            </Border>
+
+                            <!--StockwerkListe-->
                             <HierarchicalDataTemplate.ItemTemplate>
                                 <HierarchicalDataTemplate ItemsSource="{Binding RaumListe}">
-                                    <TextBlock Text="{Binding StockwerkId}" />
+                                    <Border Width="150" BorderBrush="#FF7F90D6"
+                                      Background="#FF8698E2" BorderThickness="1" CornerRadius="2" Margin="2" Padding="2">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding StockwerkId}" FontSize="16" FontWeight="Bold" Foreground="Black"/>
+                                        </StackPanel>
+                                    </Border>
 
+                                    <!--RaumListe-->
                                     <HierarchicalDataTemplate.ItemTemplate>
                                         <HierarchicalDataTemplate ItemsSource="{Binding FensterListe}">
-                                            <TextBlock Text="{Binding RaumId}" /> 
+                                            <Border Width="150" BorderBrush="AliceBlue"
+                                              Background="AliceBlue" BorderThickness="1" CornerRadius="2" Margin="2" Padding="2">
+                                                <StackPanel Orientation="Horizontal" >
+                                                    <TextBlock Text="{Binding RaumId}"  FontSize="14" FontWeight="SemiBold"  />
+                                                </StackPanel>
+                                            </Border>
 
-                                            <!--Raumliste-->
+                                            <!--Trigger für Style des Fenstercontaineritems-->
+                                            <HierarchicalDataTemplate.ItemContainerStyle>
+                                                <Style TargetType="TreeViewItem">
+                                                    <Style.Triggers>
+                                                      
+                                                        <!--Trigger zum Verstecken von Elementen wenn Radiobutton gedrückt-->
+                                                        <DataTrigger Binding="{Binding IsChecked, ElementName=rdbtn_zu}" Value="True">
+                                                            <Setter Property="Visibility" Value="{Binding Path=Geschlossen, Converter={StaticResource BoolConverter}}"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding IsChecked, ElementName=rdbtn_offen}" Value="True">
+                                                            <Setter Property="TextBlock.Visibility" Value="{Binding Path=Geschlossen,Converter={StaticResource BoolConverterReverse}}" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding IsChecked, ElementName=rdbtn_alle}" Value="True">
+                                                            <Setter Property="TextBlock.Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </HierarchicalDataTemplate.ItemContainerStyle>
+
+
                                             <HierarchicalDataTemplate.ItemTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock Text="{Binding FensterId}" >
-                                                        <TextBlock.Style>
-                                                            <Style>
-                                                                <Style.Triggers>
-                                                                    <DataTrigger Binding="{Binding IsChecked, ElementName=rdbtn_zu}" Value="True">
-                                                                        <Setter Property= "TextBlock.Visibility" Value="{Binding Path= Geschlossen, Converter={StaticResource BoolConverter}}" />
-                                                                    </DataTrigger>
-                                                                    <DataTrigger Binding="{Binding IsChecked, ElementName=rdbtn_offen}" Value="True">
-                                                                        <Setter Property="TextBlock.Visibility" Value="{Binding Path=Geschlossen,Converter={StaticResource BoolConverterReverse}}" />
-                                                                    </DataTrigger>
-                                                                    <DataTrigger Binding="{Binding IsChecked, ElementName=rdbtn_alle}" Value="True">
-                                                                        <Setter Property="TextBlock.Visibility" Value="Visible"/>
-                                                                    </DataTrigger>
-                                                                </Style.Triggers>
-                                                            </Style>
-                                                        </TextBlock.Style>
-                                                    </TextBlock>
+                                                    <!--Anmerkung: Bei mehr als 1 Style Elementen in DataTemplate braucht man einen extra Grid um diese anzuzeigen-->
+                                                    <Grid>
+                                                        <!--Trigger für Fensterfarben-->
+                                                        <Border Width="150" 
+                                      BorderThickness="1" CornerRadius="2" Margin="2" Padding="2">
+                                                            <Border.Style>
+                                                                <Style TargetType="{x:Type Border}">
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding Geschlossen}" Value="False">
+                                                                            <Setter Property="Border.Background" Value="#FFF79494"/>
+                                                                            <Setter Property="BorderBrush" Value="#FFF79494"/>
+                                                                        </DataTrigger>
 
-                                                    <!--Visiblity="{Binding Geschlossen, ElementName-->
+                                                                        <DataTrigger Binding="{Binding Geschlossen}" Value="True">
+                                                                            <Setter Property="Border.Background" Value="#FFC0F9A3"/>
+                                                                            <Setter Property="BorderBrush" Value="#FFC0F9A3" />
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Border.Style>
+
+                                                            <StackPanel Orientation="Horizontal">
+
+                                                                <!--Trigger für die Anzeigen der Fenster icons-->
+                                                                <Image>
+                                                                    <Image.Style>
+                                                                        <Style BasedOn="{StaticResource IconImageStyleSmall}" TargetType="Image">
+                                                                            <Setter Property="Source" Value="{Binding Source={StaticResource Icon_Fenster_zu}, Mode=OneTime}"/>
+                                                                            <Style.Triggers>
+                                                                                <DataTrigger Binding="{Binding Geschlossen}" Value="False">
+                                                                                    <Setter Property="Source" Value="{Binding Source={StaticResource Icon_Fenster_offen}, Mode=OneTime}"/>
+                                                                                </DataTrigger>
+                                                                            </Style.Triggers>
+                                                                        </Style>
+                                                                    </Image.Style>
+                                                                </Image>
+
+                                                                <!--Text Fensterliste-->
+                                                                <TextBlock Text="{Binding FensterId}" Margin="2">
+                                                                </TextBlock>
+                                                            </StackPanel>
+                                                        </Border>
+                                                    </Grid>
                                                 </DataTemplate>
                                             </HierarchicalDataTemplate.ItemTemplate>
                                         </HierarchicalDataTemplate>
@@ -78,24 +218,9 @@
                                 </HierarchicalDataTemplate>
                             </HierarchicalDataTemplate.ItemTemplate>
                         </HierarchicalDataTemplate>
-                    </TreeView.ItemTemplate>
-                    <TreeView.ItemContainerStyle>
-                        <Style TargetType="{x:Type TreeViewItem}">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Geschlossen}" Value="True">
-                                    <Setter Property="Background" Value="#FFF7D7D7"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Geschlossen}" Value="False">
-                                    <Setter Property="Background" Value="#FFDFFBB4"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TreeView.ItemContainerStyle>
+                    </TreeView.ItemTemplate>  
                 </TreeView>
             </Grid>
-
-
-
         </StackPanel>
     </Grid>
 </Window>

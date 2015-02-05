@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
+// Der Bool Converter wird gebraucht, um die Fenster zu verstecken (Visiblity = Collapsed), basierend auf dem bool Wert von Geschlossen.
+
 namespace Heizungssteuerung.Backend
 {
     class BoolConverter:IValueConverter
     {
 public BoolConverter() {}
-
+// Der hat zusätzlich die Variable "Reverse", wird sie auf true gesetzt, werden !Geschlossen Elemente versteckt -> Effekt wird umgekehrt
        
         public bool Reverse { get; set; }
 

@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Heizungssteuerung.Backend;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using System.Windows.Forms;
 
 
 namespace Heizungssteuerung
@@ -25,8 +26,8 @@ namespace Heizungssteuerung
     {
         private Gebaeude Gebaeude;
         private IEnumerable<Gebaeude> gebaeudeListe;
-        
-    
+
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {
@@ -49,29 +50,36 @@ namespace Heizungssteuerung
                 OnPropertyChanged("GebaeudeListe");
             }
         }
-      
-    
+
+
         public MainFensterstatusPruefen(Gebaeude g)
         {
             InitializeComponent();
             this.Loaded += MainFensterstatusPruefen_Loaded;
             this.Gebaeude = g;
-            
-            
+
+            //Disable window header buttons
+            this.SourceInitialized += (x, y) =>
+            {
+                WindowExtensions.DisableButtons(this);
+            };
+
+
 
 
         }
         void MainFensterstatusPruefen_Loaded(object sender, RoutedEventArgs e)
         {
             GebaeudeListe = new List<Gebaeude>() { Gebaeude };
-            
+
 
         }
 
         private void Zurück_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
-    
-            }
+
+        }
     }
 }
+   
