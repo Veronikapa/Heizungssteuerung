@@ -21,7 +21,6 @@ namespace Heizungssteuerung
     public partial class MainTemperaturEinstellen : Window
     {
         private Gebaeude Gebaeude;
-        private List<Stockwerk> stockwerke;
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
@@ -52,7 +51,12 @@ namespace Heizungssteuerung
             InitializeComponent();
             this.Loaded += MainFensterstatusPruefen_Loaded;
             this.Gebaeude = g;
-            
+
+            //Disable window header buttons
+            this.SourceInitialized += (x, y) =>
+            {
+                WindowExtensions.DisableButtons(this);
+            };
             
         }
         void MainFensterstatusPruefen_Loaded(object sender, RoutedEventArgs e)
