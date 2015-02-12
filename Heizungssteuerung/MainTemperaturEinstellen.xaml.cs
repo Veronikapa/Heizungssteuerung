@@ -11,23 +11,89 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 using Heizungssteuerung.Backend;
 using Heizungssteuerung.UIElemente;
 
 namespace Heizungssteuerung
 {
-    /// <summary>
-    /// Interaktionslogik für MainTemperaturEinstellen.xaml
-    /// </summary>
     public partial class MainTemperaturEinstellen : Window
     {
+        private Gebaeude Gebaeude;
+        private List<Stockwerk> stockwerke;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private IEnumerable<Gebaeude> gebaeudeListe;
+        public IEnumerable<Gebaeude> GebaeudeListe
+        {
+            get
+            {
+                return gebaeudeListe;
+            }
+
+            set
+            {
+                gebaeudeListe = value;
+                OnPropertyChanged("GebaeudeListe");
+            }
+        }
+
+
+
+        public MainTemperaturEinstellen(Gebaeude g)
+        {
+            InitializeComponent();
+            this.Loaded += MainFensterstatusPruefen_Loaded;
+            this.Gebaeude = g;
+            
+            
+        }
+        void MainFensterstatusPruefen_Loaded(object sender, RoutedEventArgs e)
+        {
+            GebaeudeListe = new List<Gebaeude>() { Gebaeude };
+        }
+
+        private void Zurück_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
+
+        /*
         private Gebaeude gebaeude;
 
         public Wohneinheit WohneinheitMain
         {
             get;
             set;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private IEnumerable<Gebaeude> gebaeudeListe;
+        public IEnumerable<Gebaeude> GebaeudeListe
+        {
+            get
+            {
+                return gebaeudeListe;
+            }
+
+            set
+            {
+                gebaeudeListe = value;
+                OnPropertyChanged("GebaeudeListe");
+            }
         }
 
         public MainTemperaturEinstellen(Gebaeude gebaeude)
@@ -47,7 +113,8 @@ namespace Heizungssteuerung
 
         void MainTemperaturEinstellen_Loaded(object sender, RoutedEventArgs e)
         {
-            ListeLaden();
+            GebaeudeListe = new List<Gebaeude>() { gebaeude };
+            //ListeLaden();
         }
         
         private void ListeLaden()
@@ -107,17 +174,17 @@ namespace Heizungssteuerung
             }
             WohneinheitUiElement eins = new WohneinheitUiElement();
             WohneinheitUiElement zwei = new WohneinheitUiElement();
-            WohneinheitUiElement drei = new WohneinheitUiElement();*/
+            WohneinheitUiElement drei = new WohneinheitUiElement();
         }
 
         private void WohneinheitUiElementZielTemperaturVeraendertEvent(object sender,EventArgs e)
         {
-            ListeLaden();
+            //ListeLaden();
         }
 
         private void Zurück_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
-        }
+        }*/
     }
 }
