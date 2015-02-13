@@ -18,7 +18,7 @@ using Heizungssteuerung.UIElemente;
 
 namespace Heizungssteuerung
 {
-    public partial class MainTemperaturEinstellen : Window
+    public partial class MainTemperaturEinstellen : Window, INotifyPropertyChanged
     {
         private Gebaeude Gebaeude;
 

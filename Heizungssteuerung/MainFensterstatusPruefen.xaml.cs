@@ -22,6 +22,8 @@ namespace Heizungssteuerung
     /// <summary>
     /// Interaction logic for MainFensterstatusPruefen.xaml
     /// </summary>
+    /// 
+    //Genau INotifyPropertyChanged hat gefehlt
     public partial class MainFensterstatusPruefen : Window, INotifyPropertyChanged
     {
         private Gebaeude Gebaeude;
