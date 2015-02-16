@@ -21,11 +21,14 @@ namespace Heizungssteuerung.UIElemente
     /// </summary>
     public partial class WohneinheitUiElement : UserControl
     {
-        public static readonly DependencyProperty WohneinheitElementProperty = DependencyProperty.Register("WohneinheitElement", typeof(Wohneinheit), typeof(WohneinheitUiElement), new FrameworkPropertyMetadata((Wohneinheit)null,FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+        public static readonly DependencyProperty WohneinheitElementProperty = DependencyProperty.Register("WohneinheitElement", typeof(Wohneinheit), typeof(WohneinheitUiElement), new FrameworkPropertyMetadata(OnAvailableItemsChanged) 
+        {
+            BindsTwoWayByDefault =true
+        });       
 
         public WohneinheitUiElement()
         {
-            this.DataContext = WohneinheitUiElementUserControl;
+            //this.DataContext = WohneinheitUiElementUserControl;
 
             InitializeComponent();
 
@@ -44,6 +47,14 @@ namespace Heizungssteuerung.UIElemente
             {
                 SetValue(WohneinheitElementProperty, value);
             }
+        }
+
+        public static void OnAvailableItemsChanged(
+           DependencyObject sender,
+           DependencyPropertyChangedEventArgs e)
+        {
+            // Breakpoint here to see if the new value is being set
+            var newValue = e.NewValue;
         }
 
         void WohneinheitUiElement_Loaded(object sender, RoutedEventArgs e)
@@ -79,7 +90,7 @@ namespace Heizungssteuerung.UIElemente
                     mehrereIconsVisible = true;
                 }
             }
-            
+
             if (this.WohneinheitElement.AnzahlFenster() > this.WohneinheitElement.AnzahlGeschlosseneFenster())
             {
                 fensterIconVisible = true;

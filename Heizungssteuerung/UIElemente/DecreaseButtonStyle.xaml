@@ -2,11 +2,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style TargetType="Image" x:Key="NextButton">
-        <Setter Property="Source" Value="pack://application:,,,/Icons/Next_Schwarz_Icon.gif" />
+    <Style TargetType="Image" x:Key="DecreaseButton">
+        <Setter Property="Source" Value="pack://application:,,,/Icons/Decrease_Schwarz_Icon.gif" />
         <Style.Triggers>
             <Trigger Property="Button.IsEnabled" Value="False">
-                <Setter Property="Source" Value="pack://application:,,,/Icons/Next_Grau_Icon.gif" />
+                <Setter Property="Source" Value="pack://application:,,,/Icons/Decrease_Grau_Icon.gif" />
             </Trigger>
         </Style.Triggers>
     </Style>

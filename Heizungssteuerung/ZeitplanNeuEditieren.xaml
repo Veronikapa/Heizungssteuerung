@@ -61,4 +61,14 @@
             </StackPanel>
         </StackPanel>
     </Grid>
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Heizungssteuerung;component/UIElemente/IncreaseButtonStyle.xaml"/>
+                <ResourceDictionary Source="/Heizungssteuerung;component/UIElemente/DecreaseButtonStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <!-- Local styles here -->
+        </ResourceDictionary>
+    </Window.Resources>
 </Window>

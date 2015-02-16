@@ -189,8 +189,8 @@ namespace Heizungssteuerung.UIElemente
             if (AktuellerWert < MinWert || AktuellerWert > MaxWert)
                 AktuellerWert = MinWert;
 
-            btn_Prev.IsEnabled = AktuellerWert != MinWert;
-            btn_Next.IsEnabled = AktuellerWert != MaxWert;
+            btn_Increase.IsEnabled = AktuellerWert != MaxWert;
+            btn_Decrease.IsEnabled = AktuellerWert != MinWert;
 
             if (AktuellerWert < 10)
                 AnzuzeigenderWert = "0" + AktuellerWert.ToString();
@@ -204,8 +204,8 @@ namespace Heizungssteuerung.UIElemente
             if (AktuellerWert < MinWert || AktuellerWert > MaxWert)
                 AktuellerWert = MinWert;
 
-            btn_Prev.IsEnabled = AktuellerWert != MinWert;
-            btn_Next.IsEnabled = AktuellerWert != MaxWert;
+            btn_Increase.IsEnabled = AktuellerWert != MaxWert;
+            btn_Decrease.IsEnabled = AktuellerWert != MinWert;
             AnzuzeigenderWert = AktuellerWert.ToString() + "° C";
         }
 
@@ -222,21 +222,21 @@ namespace Heizungssteuerung.UIElemente
 
             AnzuzeigenderWert = StringListe[aktuellerStringIndex].ToString();
 
-            btn_Prev.IsEnabled = aktuellerStringIndex != 0;
-            btn_Next.IsEnabled = aktuellerStringIndex != StringListe.Count() - 1;
+            btn_Decrease.IsEnabled = aktuellerStringIndex != 0;
+            btn_Increase.IsEnabled = aktuellerStringIndex != StringListe.Count() - 1;
 
             if (StringListe != null && StringListe.Count() == 1)
             {
-                btn_Next.IsEnabled = false;
-                btn_Prev.IsEnabled = false;
+                btn_Decrease.IsEnabled = false;
+                btn_Increase.IsEnabled = false;
             }
         }
 
-        private void btn_Prev_Click(object sender, RoutedEventArgs e)
+        private void btn_Increase_Click(object sender, RoutedEventArgs e)
         {
             if(IstStringListe)
             {
-                aktuellerStringIndex--;
+                aktuellerStringIndex++;
                 SetzeStringListeText();
 
                 if (NotifyPropertyChanged != null)
@@ -245,22 +245,22 @@ namespace Heizungssteuerung.UIElemente
 
             else if(IstTemperatur)
             {
-                AktuellerWert--;
+                AktuellerWert++;
                 SetzeTemperaturText();
             }
 
             else if(IstUhrzeit)
             {
-                AktuellerWert = IstMinute ? AktuellerWert - 5 : AktuellerWert - 1;
+                AktuellerWert = IstMinute ? AktuellerWert + 5 : AktuellerWert + 1;
                 SetzeUhrzeitText();
             }
         }
 
-        private void btn_Next_Click(object sender, RoutedEventArgs e)
+        private void btn_Decrease_Click(object sender, RoutedEventArgs e)
         {
             if (IstStringListe)
             {
-                aktuellerStringIndex++;
+                aktuellerStringIndex--;
                 SetzeStringListeText();
 
                 if(NotifyPropertyChanged!=null)
@@ -269,13 +269,13 @@ namespace Heizungssteuerung.UIElemente
 
             else if (IstTemperatur)
             {
-                AktuellerWert++;
+                AktuellerWert--;
                 SetzeTemperaturText();
             }
 
             else if (IstUhrzeit)
             {
-                AktuellerWert = IstMinute ? AktuellerWert + 5 : AktuellerWert + 1;
+                AktuellerWert = IstMinute ? AktuellerWert - 5 : AktuellerWert - 1;
                 SetzeUhrzeitText();
             }
         }

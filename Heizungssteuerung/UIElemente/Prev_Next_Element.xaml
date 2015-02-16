@@ -7,19 +7,19 @@
              mc:Ignorable="d" 
              d:DesignHeight="70" d:DesignWidth="150">
     <Grid>
-        <Button Name="btn_Prev" Height="20" Width="20" VerticalAlignment="Top" HorizontalAlignment="Center" Click="btn_Prev_Click" Background="Transparent" BorderThickness="0">
-            <Image Style="{DynamicResource PrevButton}"/>
+        <Button Name="btn_Increase" Height="20" Width="20" VerticalAlignment="Top" HorizontalAlignment="Center" Click="btn_Increase_Click" Background="Transparent" BorderThickness="0">
+            <Image Style="{DynamicResource IncreaseButton}"/>
         </Button>
         <TextBox Name="txt_Text" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Background="Transparent" BorderThickness="0" TextAlignment="Center" FontSize="16" Text="{Binding Path=AnzuzeigenderWert, Mode=TwoWay}" IsReadOnly="True"/>
-        <Button Name="btn_Next" Height="20" Width="20" VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="btn_Next_Click" Background="Transparent" BorderThickness="0">
-            <Image Style="{DynamicResource NextButton}"/>
+        <Button Name="btn_Decrease" Height="20" Width="20" VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="btn_Decrease_Click" Background="Transparent" BorderThickness="0">
+            <Image Style="{DynamicResource DecreaseButton}"/>
         </Button>
     </Grid>
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Heizungssteuerung;component/UIElemente/PrevButtonStyle.xaml"/>
-                <ResourceDictionary Source="/Heizungssteuerung;component/UIElemente/NextButtonStyle.xaml"/>
+                <ResourceDictionary Source="/Heizungssteuerung;component/UIElemente/IncreaseButtonStyle.xaml"/>
+                <ResourceDictionary Source="/Heizungssteuerung;component/UIElemente/DecreaseButtonStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <!-- Local styles here -->
         </ResourceDictionary>

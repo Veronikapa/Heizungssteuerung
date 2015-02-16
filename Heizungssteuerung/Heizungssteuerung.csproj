@@ -99,11 +99,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UIElemente\NextButtonStyle.xaml">
+    <Page Include="UIElemente\DecreaseButtonStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UIElemente\PrevButtonStyle.xaml">
+    <Page Include="UIElemente\IncreaseButtonStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -179,12 +179,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\Next_Grau_Icon.gif" />
-    <Resource Include="Icons\Next_Schwarz_Icon.gif" />
-    <Resource Include="Icons\Prev_Schwarz_Icon.gif" />
+    <Resource Include="Icons\Decrease_Grau_Icon.gif" />
+    <Resource Include="Icons\Decrease_Schwarz_Icon.gif" />
+    <Resource Include="Icons\Increase_Schwarz_Icon.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\Prev_Grau_Icon.gif" />
+    <Resource Include="Icons\Increase_Grau_Icon.gif" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\Zurueck_Icon.gif" />
