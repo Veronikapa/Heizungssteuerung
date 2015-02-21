@@ -12,23 +12,25 @@
             </Button>
         </StackPanel>
         
+        <StackPanel x:Name="gebaeudePanel" Margin="0,25,0,0" Orientation="Vertical">
+            <!-- hier werden Gebaeude angehaengt-->
+        </StackPanel>
+        
         <StackPanel x:Name="temperaturPanel" Margin="0,25,0,0" Orientation="Vertical">
-            <Grid HorizontalAlignment="Left" Height="586" Width="472" Margin="10,0,0,0">
-                <TreeView x:Name="temperaturTree" ItemsSource ="{Binding GebaeudeListe, Mode=TwoWay, ElementName=MainTemperaturEinstellenWindow}" Height="427" Margin="10,3,10,0" VerticalAlignment="Top">
+            <Grid HorizontalAlignment="Left" Height="675" Width="500" Margin="0,0,0,0">
+                <TreeView x:Name="temperaturTree" ItemsSource ="{Binding GebaeudeListe, Mode=TwoWay, ElementName=MainTemperaturEinstellenWindow}" Height="675" Margin="0,0,0,0" VerticalAlignment="Top">
+    
                     <TreeView.ItemTemplate>
                         <!--Gebäude Template -->
-                        <HierarchicalDataTemplate  ItemsSource="{Binding StockwerkListe}">
-                            <local:WohneinheitUiElement DataContext="{Binding StockwerkListe}" WohneinheitElement="{Binding Path=/}" />
-                            <!-- <TextBlock Text="{Binding GebaeudeId}" />-->
+                        <HierarchicalDataTemplate ItemsSource="{Binding StockwerkListe}">
+                            <local:WohneinheitUiElement WohneinheitElement="{Binding}" />
                             <!--StockwerkTemplate-->
                             <HierarchicalDataTemplate.ItemTemplate>
                                 <HierarchicalDataTemplate ItemsSource="{Binding RaumListe }">
-                                    <!--<local:WohneinheitUiElement DataContext="{Binding RaumListe}" WohneinheitElement="{Binding Path=/}" />-->
-                                    <TextBlock Text="{Binding StockwerkId}" />
-
+                                    <local:WohneinheitUiElement WohneinheitElement="{Binding}" />
                                     <HierarchicalDataTemplate.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding RaumId}" />
+                                            <local:WohneinheitUiElement WohneinheitElement="{Binding}" />
                                         </DataTemplate>
                                     </HierarchicalDataTemplate.ItemTemplate>
                                 </HierarchicalDataTemplate>

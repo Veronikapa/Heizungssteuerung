@@ -44,10 +44,10 @@ namespace Heizungssteuerung
             }
         }
 
-
-
         public MainTemperaturEinstellen(Gebaeude g)
         {
+            DataContext = this;
+
             InitializeComponent();
             this.Loaded += MainFensterstatusPruefen_Loaded;
             this.Gebaeude = g;
@@ -119,29 +119,30 @@ namespace Heizungssteuerung
         {
             GebaeudeListe = new List<Gebaeude>() { gebaeude };
             //ListeLaden();
-        }
+        }*/
         
         private void ListeLaden()
         {
-            temperaturPanel.Items.Clear();
+
+            temperaturTree.Items.Clear();
 
             var whiteValue = true;
 
             WohneinheitUiElement gebaeudeUi = new WohneinheitUiElement();
-            gebaeudeUi.WohneinheitElement = this.gebaeude;
+            gebaeudeUi.WohneinheitElement = this.Gebaeude;
             gebaeudeUi.Background = Brushes.AliceBlue;
             gebaeudeUi.WohneinheitUiElementZielTemperaturVeraendert = this.WohneinheitUiElementZielTemperaturVeraendertEvent;
-            temperaturPanel.Items.Add(gebaeudeUi);
+            temperaturTree.Items.Add(gebaeudeUi);
             
             whiteValue = false;
 
-            foreach (var stockwerk in this.gebaeude.StockwerkListe)
+            foreach (var stockwerk in this.Gebaeude.StockwerkListe)
             {
                 var stockwerkUiElement = new WohneinheitUiElement();
                 stockwerkUiElement.WohneinheitElement = stockwerk;
                 stockwerkUiElement.Background = whiteValue ? Brushes.AliceBlue : Brushes.GhostWhite;
                 stockwerkUiElement.WohneinheitUiElementZielTemperaturVeraendert = this.WohneinheitUiElementZielTemperaturVeraendertEvent;
-                temperaturPanel.Items.Add(stockwerkUiElement);
+                temperaturTree.Items.Add(stockwerkUiElement);
 
                 whiteValue = !whiteValue;
 
@@ -151,7 +152,7 @@ namespace Heizungssteuerung
                     raumUiElement.WohneinheitElement = raum;
                     raumUiElement.Background = whiteValue ? Brushes.AliceBlue : Brushes.GhostWhite;
                     raumUiElement.WohneinheitUiElementZielTemperaturVeraendert = this.WohneinheitUiElementZielTemperaturVeraendertEvent;
-                    temperaturPanel.Items.Add(raumUiElement);
+                    temperaturTree.Items.Add(raumUiElement);
 
                     whiteValue = !whiteValue;
                 }
@@ -178,14 +179,14 @@ namespace Heizungssteuerung
             }
             WohneinheitUiElement eins = new WohneinheitUiElement();
             WohneinheitUiElement zwei = new WohneinheitUiElement();
-            WohneinheitUiElement drei = new WohneinheitUiElement();
+            WohneinheitUiElement drei = new WohneinheitUiElement();*/
         }
 
         private void WohneinheitUiElementZielTemperaturVeraendertEvent(object sender,EventArgs e)
         {
-            //ListeLaden();
+            ListeLaden();
         }
-
+        /*
         private void Zurück_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();

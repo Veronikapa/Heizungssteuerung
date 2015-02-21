@@ -21,15 +21,16 @@ namespace Heizungssteuerung.UIElemente
     /// </summary>
     public partial class WohneinheitUiElement : UserControl
     {
-        public static readonly DependencyProperty WohneinheitElementProperty = DependencyProperty.Register("WohneinheitElement", typeof(Wohneinheit), typeof(WohneinheitUiElement), new FrameworkPropertyMetadata(OnAvailableItemsChanged) 
-        {
-            BindsTwoWayByDefault =true
-        });       
+        public static readonly DependencyProperty WohneinheitElementProperty = 
+            DependencyProperty.Register(
+                "WohneinheitElement", 
+                typeof(Wohneinheit),
+                typeof(WohneinheitUiElement), 
+                new FrameworkPropertyMetadata(null));
+       
 
         public WohneinheitUiElement()
         {
-            //this.DataContext = WohneinheitUiElementUserControl;
-
             InitializeComponent();
 
             this.Loaded += WohneinheitUiElement_Loaded;
