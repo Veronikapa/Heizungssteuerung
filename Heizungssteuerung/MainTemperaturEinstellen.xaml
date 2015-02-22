@@ -10,6 +10,12 @@
             <Style x:Key ="elementStyle" TargetType="{x:Type TreeViewItem}">
                 <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
             </Style>
+
+            <BitmapImage x:Key="Frost" UriSource="pack://application:,,,/Icons/Schneeflocke.gif" />
+            <BitmapImage x:Key="Feuer" UriSource="pack://application:,,,/Icons/Flamme.gif" />
+            <BitmapImage x:Key="Fenster" UriSource="pack://application:,,,/Icons/FensterIcon.gif" />
+            <BitmapImage x:Key="Multiple" UriSource="pack://application:,,,/Icons/MultipleIcon.gif" />
+            <BitmapImage x:Key="Stoer" UriSource="pack://application:,,,/Icons/StoerIcon.gif" />
         </Grid.Resources>
         
         <StackPanel Height="25" VerticalAlignment="Top" Orientation="Horizontal" Background="GhostWhite">
@@ -29,14 +35,29 @@
                     <TreeView.ItemTemplate>
                         <!--Gebäude Template -->
                         <HierarchicalDataTemplate ItemsSource="{Binding StockwerkListe}">
-                            <local:WohneinheitUiElement WohneinheitElement="{Binding }" TreeViewReference="{Binding MainTreeView, ElementName=MainTemperaturEinstellenWindow}" />
+                            <local:WohneinheitUiElement WohneinheitElement="{Binding }" TreeViewReference="{Binding MainTreeView, ElementName=MainTemperaturEinstellenWindow}" 
+                                                        Frost ="{StaticResource Frost}" 
+                                                        Feuer ="{StaticResource Feuer}" 
+                                                        Fenster ="{StaticResource Fenster}" 
+                                                        Multiple ="{StaticResource Multiple}"
+                                                        Stoer ="{StaticResource Stoer}"/>
                             <!--StockwerkTemplate-->
                             <HierarchicalDataTemplate.ItemTemplate>
                                 <HierarchicalDataTemplate ItemsSource="{Binding RaumListe}">
-                                    <local:WohneinheitUiElement WohneinheitElement="{Binding }" TreeViewReference="{Binding MainTreeView, ElementName=MainTemperaturEinstellenWindow}" />
+                                    <local:WohneinheitUiElement WohneinheitElement="{Binding }" TreeViewReference="{Binding MainTreeView, ElementName=MainTemperaturEinstellenWindow}" 
+                                                                Frost ="{StaticResource Frost}" 
+                                                                Feuer ="{StaticResource Feuer}" 
+                                                                Fenster ="{StaticResource Fenster}" 
+                                                                Multiple ="{StaticResource Multiple}"
+                                                                Stoer ="{StaticResource Stoer}"/>
                                     <HierarchicalDataTemplate.ItemTemplate>
                                         <DataTemplate>
-                                            <local:WohneinheitUiElement WohneinheitElement="{Binding }" TreeViewReference="{Binding MainTreeView, ElementName=MainTemperaturEinstellenWindow}"/>
+                                            <local:WohneinheitUiElement WohneinheitElement="{Binding }" TreeViewReference="{Binding MainTreeView, ElementName=MainTemperaturEinstellenWindow}"
+                                                                        Frost ="{StaticResource Frost}" 
+                                                                        Feuer ="{StaticResource Feuer}" 
+                                                                        Fenster ="{StaticResource Fenster}" 
+                                                                        Multiple ="{StaticResource Multiple}"
+                                                                        Stoer ="{StaticResource Stoer}"/>
                                         </DataTemplate>
                                     </HierarchicalDataTemplate.ItemTemplate>
                                 </HierarchicalDataTemplate>

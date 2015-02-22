@@ -21,6 +21,8 @@ namespace Heizungssteuerung.UIElemente
     /// </summary>
     public partial class WohneinheitUiElement : UserControl
     {
+        #region Dependency Properties
+
         public static readonly DependencyProperty WohneinheitElementProperty = 
             DependencyProperty.Register(
                 "WohneinheitElement", 
@@ -35,6 +37,43 @@ namespace Heizungssteuerung.UIElemente
                 typeof(WohneinheitUiElement),
                 new FrameworkPropertyMetadata(null));
 
+        public static readonly DependencyProperty FrostProperty =
+            DependencyProperty.Register(
+                "Frost",
+                typeof(BitmapImage),
+                typeof(WohneinheitUiElement),
+                new FrameworkPropertyMetadata(null));
+
+        public static readonly DependencyProperty FeuerProperty =
+            DependencyProperty.Register(
+                "Feuer",
+                typeof(BitmapImage),
+                typeof(WohneinheitUiElement),
+                new FrameworkPropertyMetadata(null));
+
+        public static readonly DependencyProperty FensterProperty =
+            DependencyProperty.Register(
+                "Fenster",
+                typeof(BitmapImage),
+                typeof(WohneinheitUiElement),
+                new FrameworkPropertyMetadata(null));
+
+        public static readonly DependencyProperty MultipleProperty =
+            DependencyProperty.Register(
+                "Multiple",
+                typeof(BitmapImage),
+                typeof(WohneinheitUiElement),
+                new FrameworkPropertyMetadata(null));
+
+        public static readonly DependencyProperty StoerProperty =
+            DependencyProperty.Register(
+                "Stoer",
+                typeof(BitmapImage),
+                typeof(WohneinheitUiElement),
+                new FrameworkPropertyMetadata(null));
+
+        #endregion
+
         public WohneinheitUiElement()
         {
             InitializeComponent();
@@ -43,6 +82,8 @@ namespace Heizungssteuerung.UIElemente
         }
 
         public EventHandler WohneinheitUiElementZielTemperaturVeraendert;
+
+        #region Properties
 
         public TreeView TreeViewReference
         {
@@ -68,6 +109,67 @@ namespace Heizungssteuerung.UIElemente
             }
         }
 
+        public BitmapImage Frost
+        {
+            get
+            {
+                return (BitmapImage)GetValue(FrostProperty);
+            }
+            set
+            {
+                SetValue(FrostProperty, value);
+            }
+        }
+
+        public BitmapImage Feuer
+        {
+            get
+            {
+                return (BitmapImage)GetValue(FeuerProperty);
+            }
+            set
+            {
+                SetValue(FeuerProperty, value);
+            }
+        }
+
+        public BitmapImage Fenster
+        {
+            get
+            {
+                return (BitmapImage)GetValue(FensterProperty);
+            }
+            set
+            {
+                SetValue(FensterProperty, value);
+            }
+        }
+
+        public BitmapImage Multiple
+        {
+            get
+            {
+                return (BitmapImage)GetValue(MultipleProperty);
+            }
+            set
+            {
+                SetValue(MultipleProperty, value);
+            }
+        }
+
+        public BitmapImage Stoer
+        {
+            get
+            {
+                return (BitmapImage)GetValue(StoerProperty);
+            }
+            set
+            {
+                SetValue(StoerProperty, value);
+            }
+        }
+        #endregion
+
         public static void OnAvailableItemsChanged(
            DependencyObject sender,
            DependencyPropertyChangedEventArgs e)
@@ -78,7 +180,7 @@ namespace Heizungssteuerung.UIElemente
 
         void WohneinheitUiElement_Loaded(object sender, RoutedEventArgs e)
         {
-            /*bool frostIconVisible = false;
+            bool frostIconVisible = false;
             bool feuerIconVisible = false;
             bool fensterIconVisible = false;
             bool stoerIconVisible = false;
@@ -90,7 +192,7 @@ namespace Heizungssteuerung.UIElemente
             FeuerIcon.Visibility = Visibility.Hidden;
             StoerIcon.Visibility = Visibility.Hidden;
 
-            if (this.WohneinheitElement.AktuelleTemperatur >= 35)
+            if (this.WohneinheitElement.AktuelleTemperatur >= Wohneinheit.GRENZE_FEUER)
             {
                 feuerIconVisible = true;
 
@@ -100,7 +202,7 @@ namespace Heizungssteuerung.UIElemente
                 }
             }
 
-            if (this.WohneinheitElement.AktuelleTemperatur <= 5 && this.WohneinheitElement.AktuelleTemperatur != 999)
+            if (this.WohneinheitElement.AktuelleTemperatur <= Wohneinheit.GRENZE_FROST && this.WohneinheitElement.AktuelleTemperatur != -999)
             {
                 frostIconVisible = true;
 
@@ -149,7 +251,7 @@ namespace Heizungssteuerung.UIElemente
             else if (stoerIconVisible)
             {
                 StoerIcon.Visibility = Visibility.Visible;
-            }*/
+            }
         }
 
         private void ZielTemperaturErhoehen_Click(object sender, RoutedEventArgs e)
