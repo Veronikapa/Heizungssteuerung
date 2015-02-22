@@ -107,6 +107,14 @@ namespace Heizungssteuerung.UIElemente
                 typeof(WohneinheitUiElement),
                 new FrameworkPropertyMetadata(null));
 
+        public static readonly DependencyProperty ForegroundColorProperty =
+            DependencyProperty.Register(
+                "ForegroundColor",
+                typeof(Brush),
+                typeof(WohneinheitUiElement),
+                new FrameworkPropertyMetadata(null));
+
+
         #endregion
 
         public WohneinheitUiElement()
@@ -263,6 +271,19 @@ namespace Heizungssteuerung.UIElemente
                 SetValue(MarginFiveProperty, value);
             }
         }
+
+        public Brush ForegroundColor
+        {
+            get
+            {
+                return (Brush)GetValue(ForegroundColorProperty);
+            }
+            set
+            {
+                SetValue(ForegroundColorProperty, value);
+            }
+        }
+
         #endregion
 
         public static void OnAvailableItemsChanged(

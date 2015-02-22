@@ -140,7 +140,7 @@
                                     <HierarchicalDataTemplate.ItemTemplate>
                                         <HierarchicalDataTemplate ItemsSource="{Binding FensterListe}">
                                             <Border Width="150" BorderBrush="AliceBlue"
-                                              Background="AliceBlue" BorderThickness="1" CornerRadius="2" Margin="2" Padding="2">
+                                              Background="PowderBlue" BorderThickness="1" CornerRadius="2" Margin="2" Padding="2">
                                                 <StackPanel Orientation="Horizontal" >
                                                     <TextBlock Text="{Binding RaumId}"  FontSize="14" FontWeight="SemiBold"  />
                                                 </StackPanel>
