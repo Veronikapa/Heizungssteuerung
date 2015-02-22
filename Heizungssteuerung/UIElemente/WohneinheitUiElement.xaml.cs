@@ -58,16 +58,16 @@ namespace Heizungssteuerung.UIElemente
                 typeof(WohneinheitUiElement),
                 new FrameworkPropertyMetadata(null));
 
-        public static readonly DependencyProperty MultipleProperty =
+        public static readonly DependencyProperty FeuerFensterProperty =
             DependencyProperty.Register(
-                "Multiple",
+                "FeuerFenster",
                 typeof(BitmapImage),
                 typeof(WohneinheitUiElement),
                 new FrameworkPropertyMetadata(null));
 
-        public static readonly DependencyProperty StoerProperty =
+        public static readonly DependencyProperty FrostFensterProperty =
             DependencyProperty.Register(
-                "Stoer",
+                "FrostFenster",
                 typeof(BitmapImage),
                 typeof(WohneinheitUiElement),
                 new FrameworkPropertyMetadata(null));
@@ -188,27 +188,27 @@ namespace Heizungssteuerung.UIElemente
             }
         }
 
-        public BitmapImage Multiple
+        public BitmapImage FeuerFenster
         {
             get
             {
-                return (BitmapImage)GetValue(MultipleProperty);
+                return (BitmapImage)GetValue(FeuerFensterProperty);
             }
             set
             {
-                SetValue(MultipleProperty, value);
+                SetValue(FeuerFensterProperty, value);
             }
         }
 
-        public BitmapImage Stoer
+        public BitmapImage FrostFenster
         {
             get
             {
-                return (BitmapImage)GetValue(StoerProperty);
+                return (BitmapImage)GetValue(FrostFensterProperty);
             }
             set
             {
-                SetValue(StoerProperty, value);
+                SetValue(FrostFensterProperty, value);
             }
         }
 
@@ -296,77 +296,48 @@ namespace Heizungssteuerung.UIElemente
 
         void WohneinheitUiElement_Loaded(object sender, RoutedEventArgs e)
         {
-            bool frostIconVisible = false;
-            bool feuerIconVisible = false;
-            bool fensterIconVisible = false;
-            bool stoerIconVisible = false;
-            bool mehrereIconsVisible = false;
-
-            MultipleIcon.Visibility = Visibility.Hidden;
+            FrostFensterIcon.Visibility = Visibility.Hidden;
             FrostIcon.Visibility = Visibility.Hidden;
             FensterIcon.Visibility = Visibility.Hidden;
             FeuerIcon.Visibility = Visibility.Hidden;
-            StoerIcon.Visibility = Visibility.Hidden;
+            FeuerFensterIcon.Visibility = Visibility.Hidden;
+
+
+            bool fensterOffen = this.WohneinheitElement.AnzahlFenster() > this.WohneinheitElement.AnzahlGeschlosseneFenster();
 
             if (this.WohneinheitElement.AktuelleTemperatur >= Wohneinheit.GRENZE_FEUER)
             {
-                feuerIconVisible = true;
-
-                if (fensterIconVisible || frostIconVisible || stoerIconVisible)
+                if (fensterOffen)
                 {
-                    mehrereIconsVisible = true;
+                    FeuerFensterIcon.Visibility = Visibility.Visible;
+                    
                 }
-            }
-
-            if (this.WohneinheitElement.AktuelleTemperatur <= Wohneinheit.GRENZE_FROST && this.WohneinheitElement.AktuelleTemperatur != -999)
-            {
-                frostIconVisible = true;
-
-                if (feuerIconVisible || fensterIconVisible || stoerIconVisible)
+                else
                 {
-                    mehrereIconsVisible = true;
+                    FeuerIcon.Visibility = Visibility.Visible;
                 }
+
+                return;
             }
 
-            if (this.WohneinheitElement.AnzahlFenster() > this.WohneinheitElement.AnzahlGeschlosseneFenster())
+            if (this.WohneinheitElement.AktuelleTemperatur <= Wohneinheit.GRENZE_FROST)
             {
-                fensterIconVisible = true;
-
-                if (feuerIconVisible || frostIconVisible || stoerIconVisible)
+                if (fensterOffen)
                 {
-                    mehrereIconsVisible = true;
+                    FrostFensterIcon.Visibility = Visibility.Visible;
+
                 }
-            }
-
-            if (this.WohneinheitElement.AktuelleTemperatur == -999)
-            {
-                stoerIconVisible = true;
-
-                if (feuerIconVisible || frostIconVisible || fensterIconVisible)
+                else
                 {
-                    mehrereIconsVisible = true;
+                    FrostIcon.Visibility = Visibility.Visible;
                 }
+
+                return;
             }
 
-            if (mehrereIconsVisible)
-            {
-                MultipleIcon.Visibility = Visibility.Visible;
-            }
-            else if (frostIconVisible)
-            {
-                FrostIcon.Visibility = Visibility.Visible;
-            }
-            else if (fensterIconVisible)
+            if (fensterOffen)
             {
                 FensterIcon.Visibility = Visibility.Visible;
-            }
-            else if (feuerIconVisible)
-            {
-                FeuerIcon.Visibility = Visibility.Visible;
-            }
-            else if (stoerIconVisible)
-            {
-                StoerIcon.Visibility = Visibility.Visible;
             }
         }
 

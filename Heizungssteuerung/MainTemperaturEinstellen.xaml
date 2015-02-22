@@ -10,9 +10,9 @@
             
             <BitmapImage x:Key="Frost" UriSource="pack://application:,,,/Icons/Schneeflocke.gif" />
             <BitmapImage x:Key="Feuer" UriSource="pack://application:,,,/Icons/Flamme.gif" />
-            <BitmapImage x:Key="Fenster" UriSource="pack://application:,,,/Icons/FensterIcon.gif" />
-            <BitmapImage x:Key="Multiple" UriSource="pack://application:,,,/Icons/MultipleIcon.gif" />
-            <BitmapImage x:Key="Stoer" UriSource="pack://application:,,,/Icons/StoerIcon.gif" />
+            <BitmapImage x:Key="Fenster" UriSource="pack://application:,,,/Icons/FensterIcon_1.gif" />
+            <BitmapImage x:Key="FeuerFenster" UriSource="pack://application:,,,/Icons/FeuerFensterIcon.gif" />
+            <BitmapImage x:Key="FrostFenster" UriSource="pack://application:,,,/Icons/FrostFensterIcon.gif" />
 
             <!--Style für Toggle Button-->
             <Style x:Key ="ExpanderStyle" TargetType="{x:Type ToggleButton}">
@@ -108,8 +108,8 @@
                                                         Frost ="{StaticResource Frost}" 
                                                         Feuer ="{StaticResource Feuer}" 
                                                         Fenster ="{StaticResource Fenster}" 
-                                                        Multiple ="{StaticResource Multiple}"
-                                                        Stoer ="{StaticResource Stoer}"
+                                                        FeuerFenster ="{StaticResource FeuerFenster}"
+                                                        FrostFenster ="{StaticResource FrostFenster}"
                                                         MarginOne="{Binding MarginGebaeudeValOne, ElementName=MainTemperaturEinstellenWindow}"
                                                         MarginTwo="{Binding MarginGebaeudeValTwo, ElementName=MainTemperaturEinstellenWindow}"
                                                         MarginThree="{Binding MarginGebaeudeValThree, ElementName=MainTemperaturEinstellenWindow}"
@@ -122,8 +122,8 @@
                                                                 Frost ="{StaticResource Frost}" 
                                                                 Feuer ="{StaticResource Feuer}" 
                                                                 Fenster ="{StaticResource Fenster}" 
-                                                                Multiple ="{StaticResource Multiple}"
-                                                                Stoer ="{StaticResource Stoer}"
+                                                                FeuerFenster ="{StaticResource FeuerFenster}"
+                                                                FrostFenster ="{StaticResource FrostFenster}"
                                                                 MarginOne="{Binding MarginStockwerkValOne, ElementName=MainTemperaturEinstellenWindow}"
                                                                 MarginTwo="{Binding MarginStockwerkValTwo, ElementName=MainTemperaturEinstellenWindow}"
                                                                 MarginThree="{Binding MarginStockwerkValThree, ElementName=MainTemperaturEinstellenWindow}"
@@ -135,8 +135,8 @@
                                                                         Frost ="{StaticResource Frost}" 
                                                                         Feuer ="{StaticResource Feuer}" 
                                                                         Fenster ="{StaticResource Fenster}" 
-                                                                        Multiple ="{StaticResource Multiple}"
-                                                                        Stoer ="{StaticResource Stoer}"
+                                                                        FeuerFenster ="{StaticResource FeuerFenster}"
+                                                                        FrostFenster ="{StaticResource FrostFenster}"
                                                                         MarginOne="{Binding MarginRaumValOne, ElementName=MainTemperaturEinstellenWindow}"
                                                                         MarginTwo="{Binding MarginRaumValTwo, ElementName=MainTemperaturEinstellenWindow}"
                                                                         MarginThree="{Binding MarginRaumValThree, ElementName=MainTemperaturEinstellenWindow}"

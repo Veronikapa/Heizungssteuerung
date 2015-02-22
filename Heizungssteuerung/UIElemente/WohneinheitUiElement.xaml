@@ -18,16 +18,12 @@
             <Image Source="pack://application:,,,/Icons/Decrease_Schwarz_Icon.gif" Height="15" Width="20"/>
         </Button>
 
-        <!-- <Image Source="pack://application:,,,/Icons/Thermometer.gif" HorizontalAlignment="Left" Height="60" Margin="117,30,0,0" VerticalAlignment="Top" Width="27" RenderTransformOrigin="6.938,1.31"/> -->
-        <!-- <Image Source="pack://application:,,,/Icons/Thermometer.gif" HorizontalAlignment="Left" Height="60" Margin="215,30,0,0" VerticalAlignment="Top" Width="25" RenderTransformOrigin="6.938,1.31"/> -->
         <Image x:Name="FeuerIcon" Visibility="Hidden" Source="{Binding Path=Feuer, ElementName=WohneinheitUiElementUserControl}" HorizontalAlignment="Right" Height="50" Margin="{Binding Path=MarginFive, ElementName=WohneinheitUiElementUserControl}" VerticalAlignment="Top" Width="50" RenderTransformOrigin="6.938,1.31"/>
         <Image x:Name="FrostIcon" Visibility="Hidden" Source="{Binding Path=Frost, ElementName=WohneinheitUiElementUserControl}" HorizontalAlignment="Right" Height="50" Margin="{Binding Path=MarginFive, ElementName=WohneinheitUiElementUserControl}" VerticalAlignment="Top" Width="50" RenderTransformOrigin="6.938,1.31"/>
         <Image x:Name="FensterIcon" Visibility="Hidden" Source="{Binding Path=Fenster, ElementName=WohneinheitUiElementUserControl}" HorizontalAlignment="Right" Height="50" Margin="{Binding Path=MarginFive, ElementName=WohneinheitUiElementUserControl}" VerticalAlignment="Top" Width="50" RenderTransformOrigin="6.938,1.31"/>
-        <Image x:Name="StoerIcon" Visibility="Hidden" Source="{Binding Path=Stoer, ElementName=WohneinheitUiElementUserControl}" HorizontalAlignment="Right" Height="50" Margin="{Binding Path=MarginFive, ElementName=WohneinheitUiElementUserControl}" VerticalAlignment="Top" Width="50" RenderTransformOrigin="6.938,1.31"/>
-        <Image x:Name="MultipleIcon" Visibility="Hidden" Source="{Binding Path=Multiple, ElementName=WohneinheitUiElementUserControl}" HorizontalAlignment="Right" Height="50" Margin="{Binding Path=MarginFive, ElementName=WohneinheitUiElementUserControl}" VerticalAlignment="Top" Width="50" RenderTransformOrigin="6.938,1.31"/>
+        <Image x:Name="FeuerFensterIcon" Visibility="Hidden" Source="{Binding Path=FeuerFenster, ElementName=WohneinheitUiElementUserControl}" HorizontalAlignment="Right" Height="50" Margin="{Binding Path=MarginFive, ElementName=WohneinheitUiElementUserControl}" VerticalAlignment="Top" Width="50" RenderTransformOrigin="6.938,1.31"/>
+        <Image x:Name="FrostFensterIcon" Visibility="Hidden" Source="{Binding Path=FrostFenster, ElementName=WohneinheitUiElementUserControl}" HorizontalAlignment="Right" Height="50" Margin="{Binding Path=MarginFive, ElementName=WohneinheitUiElementUserControl}" VerticalAlignment="Top" Width="50" RenderTransformOrigin="6.938,1.31"/>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Stretch" Height="1" Margin="0,119,0,0" Stroke="Black" VerticalAlignment="Top"/>
-        <!--<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="500"/>-->
-        <!-- <Label Content="Aktuell" HorizontalAlignment="Left" Margin="106,4,0,0" VerticalAlignment="Top"/> -->
-        <!-- <Label Content="Ziel" HorizontalAlignment="Left" Margin="210,4,0,0" VerticalAlignment="Top"/> -->
+        
     </Grid>
 </UserControl>
