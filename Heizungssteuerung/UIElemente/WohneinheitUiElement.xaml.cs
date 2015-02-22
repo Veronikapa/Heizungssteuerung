@@ -72,6 +72,41 @@ namespace Heizungssteuerung.UIElemente
                 typeof(WohneinheitUiElement),
                 new FrameworkPropertyMetadata(null));
 
+        public static readonly DependencyProperty MarginOneProperty =
+            DependencyProperty.Register(
+                "MarginOne",
+                typeof(Thickness),
+                typeof(WohneinheitUiElement),
+                new FrameworkPropertyMetadata(null));
+
+        public static readonly DependencyProperty MarginTwoProperty =
+            DependencyProperty.Register(
+                "MarginTwo",
+                typeof(Thickness),
+                typeof(WohneinheitUiElement),
+                new FrameworkPropertyMetadata(null));
+
+        public static readonly DependencyProperty MarginThreeProperty =
+            DependencyProperty.Register(
+                "MarginThree",
+                typeof(Thickness),
+                typeof(WohneinheitUiElement),
+                new FrameworkPropertyMetadata(null));
+
+        public static readonly DependencyProperty MarginFourProperty =
+            DependencyProperty.Register(
+                "MarginFour",
+                typeof(Thickness),
+                typeof(WohneinheitUiElement),
+                new FrameworkPropertyMetadata(null));
+
+        public static readonly DependencyProperty MarginFiveProperty =
+            DependencyProperty.Register(
+                "MarginFive",
+                typeof(Thickness),
+                typeof(WohneinheitUiElement),
+                new FrameworkPropertyMetadata(null));
+
         #endregion
 
         public WohneinheitUiElement()
@@ -166,6 +201,66 @@ namespace Heizungssteuerung.UIElemente
             set
             {
                 SetValue(StoerProperty, value);
+            }
+        }
+
+        public Thickness MarginOne
+        {
+            get
+            {
+                return (Thickness)GetValue(MarginOneProperty);
+            }
+            set
+            {
+                SetValue(MarginOneProperty, value);
+            }
+        }
+
+        public Thickness MarginTwo
+        {
+            get
+            {
+                return (Thickness)GetValue(MarginTwoProperty);
+            }
+            set
+            {
+                SetValue(MarginTwoProperty, value);
+            }
+        }
+
+        public Thickness MarginThree
+        {
+            get
+            {
+                return (Thickness)GetValue(MarginThreeProperty);
+            }
+            set
+            {
+                SetValue(MarginThreeProperty, value);
+            }
+        }
+
+        public Thickness MarginFour
+        {
+            get
+            {
+                return (Thickness)GetValue(MarginFourProperty);
+            }
+            set
+            {
+                SetValue(MarginFourProperty, value);
+            }
+        }
+
+        public Thickness MarginFive
+        {
+            get
+            {
+                return (Thickness)GetValue(MarginFiveProperty);
+            }
+            set
+            {
+                SetValue(MarginFiveProperty, value);
             }
         }
         #endregion

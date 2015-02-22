@@ -20,6 +20,134 @@ namespace Heizungssteuerung
 {
     public partial class MainTemperaturEinstellen : Window, INotifyPropertyChanged
     {
+        #region Thickness Helper Properties
+
+        int gebOffset = 38;
+        int stwOffset = 19;
+
+
+        public Thickness MarginGebaeudeValOne
+        {
+            get
+            {
+                return new Thickness(149 + gebOffset, 48, 0, 0);
+            }
+        }
+
+        public Thickness MarginGebaeudeValTwo
+        {
+            get
+            {
+                return new Thickness(260 + gebOffset, 48, 0, 0);
+            }
+        }
+
+        public Thickness MarginGebaeudeValThree
+        {
+            get
+            {
+                return new Thickness(260 + gebOffset, 10, 0, 86);
+            }
+        }
+
+        public Thickness MarginGebaeudeValFour
+        {
+            get
+            {
+                return new Thickness(260 + gebOffset, 86, 0, 10);
+            }
+        }
+
+        public Thickness MarginGebaeudeValFive
+        {
+            get
+            {
+                return new Thickness(340 + gebOffset, 35, 30, 0);
+            }
+        }
+
+        public Thickness MarginStockwerkValOne
+        {
+            get
+            {
+                return new Thickness(149 + stwOffset, 48, 0, 0);
+            }
+        }
+
+        public Thickness MarginStockwerkValTwo
+        {
+            get
+            {
+                return new Thickness(260 + stwOffset, 48, 0, 0);
+            }
+        }
+
+        public Thickness MarginStockwerkValThree
+        {
+            get
+            {
+                return new Thickness(260 + stwOffset, 10, 0, 86);
+            }
+        }
+
+        public Thickness MarginStockwerkValFour
+        {
+            get
+            {
+                return new Thickness(260 + stwOffset, 86, 0, 10);
+            }
+        }
+
+        public Thickness MarginStockwerkValFive
+        {
+            get
+            {
+                return new Thickness(340 + stwOffset, 35, 30, 0);
+            }
+        }
+
+        public Thickness MarginRaumValOne
+        {
+            get
+            {
+                return new Thickness(149, 48, 0, 0);
+            }
+        }
+
+        public Thickness MarginRaumValTwo
+        {
+            get
+            {
+                return new Thickness(260, 48, 0, 0);
+            }
+        }
+
+        public Thickness MarginRaumValThree
+        {
+            get
+            {
+                return new Thickness(260, 10, 0, 86);
+            }
+        }
+
+        public Thickness MarginRaumValFour
+        {
+            get
+            {
+                return new Thickness(260, 86, 0, 10);
+            }
+        }
+
+        public Thickness MarginRaumValFive
+        {
+            get
+            {
+                return new Thickness(340, 40, 30, 0);
+            }
+        }
+
+        #endregion
+
         private Gebaeude Gebaeude;
 
         public event PropertyChangedEventHandler PropertyChanged;

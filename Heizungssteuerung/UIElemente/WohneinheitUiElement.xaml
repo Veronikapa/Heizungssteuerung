@@ -5,27 +5,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:my="clr-namespace:Heizungssteuerung.UIElemente"
              mc:Ignorable="d"
-             d:DesignHeight="120" d:DesignWidth="380" x:Name="WohneinheitUiElementUserControl">
+             d:DesignHeight="120" d:DesignWidth="500" x:Name="WohneinheitUiElementUserControl">
     <Grid>
         <Label Content="{Binding Path=WohneinheitElement.WohneinheitId, ElementName=WohneinheitUiElementUserControl, Mode=TwoWay}" FontWeight="Bold" FontSize="14" Height="25" HorizontalAlignment="Left" Margin="0,48,0,0" VerticalAlignment="Top" Width="112"/>
-        <Label Content="{Binding Path=WohneinheitElement.AktuelleTemperatur, ElementName=WohneinheitUiElementUserControl, Mode=TwoWay}" FontWeight="Bold" FontSize="14" Height="25" HorizontalAlignment="Left" Margin="149,48,0,0" VerticalAlignment="Top" Width="50"/>
-        <Label Content="{Binding Path=WohneinheitElement.ZielTemperatur, ElementName=WohneinheitUiElementUserControl}" FontWeight="Bold" FontSize="14" Height="25" HorizontalAlignment="Left" Margin="260,48,0,0" VerticalAlignment="Top" Width="50"/>
+        <Label Content="{Binding Path=WohneinheitElement.AktuelleTemperatur, ElementName=WohneinheitUiElementUserControl, Mode=TwoWay}" FontWeight="Bold" FontSize="14" Height="25" HorizontalAlignment="Left" Margin="{Binding Path=MarginOne, ElementName=WohneinheitUiElementUserControl}" VerticalAlignment="Top" Width="50"/>
+        <Label Content="{Binding Path=WohneinheitElement.ZielTemperatur, ElementName=WohneinheitUiElementUserControl}" FontWeight="Bold" FontSize="14" Height="25" HorizontalAlignment="Left" Margin="{Binding Path=MarginTwo, ElementName=WohneinheitUiElementUserControl}" VerticalAlignment="Top" Width="50"/>
 
-        <Button Height="25" Width="30" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Margin="260,10,0,86" Click="ZielTemperaturErhoehen_Click">
+        <Button Height="25" Width="30" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Margin="{Binding Path=MarginThree, ElementName=WohneinheitUiElementUserControl}" Click="ZielTemperaturErhoehen_Click">
             <Image Source="pack://application:,,,/Icons/Increase_Schwarz_Icon.gif" Height="15" Width="20"/>
         </Button>
-        <Button Height="25" Width="30" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Margin="260,86,0,10" Click="ZielTemperaturVerringern_Click">
+        <Button Height="25" Width="30" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Margin="{Binding Path=MarginFour, ElementName=WohneinheitUiElementUserControl}" Click="ZielTemperaturVerringern_Click">
             <Image Source="pack://application:,,,/Icons/Decrease_Schwarz_Icon.gif" Height="15" Width="20"/>
         </Button>
 
-        <Image Source="pack://application:,,,/Icons/Thermometer.gif" HorizontalAlignment="Left" Height="60" Margin="117,30,0,0" VerticalAlignment="Top" Width="27" RenderTransformOrigin="6.938,1.31"/>
-        <Image Source="pack://application:,,,/Icons/Thermometer.gif" HorizontalAlignment="Left" Height="60" Margin="215,30,0,0" VerticalAlignment="Top" Width="25" RenderTransformOrigin="6.938,1.31"/>
-        <Image x:Name="FeuerIcon" Visibility="Hidden" Source="{Binding Path=Feuer, ElementName=WohneinheitUiElementUserControl}" HorizontalAlignment="Left" Height="50" Margin="315,35,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="6.938,1.31"/>
-        <Image x:Name="FrostIcon" Visibility="Hidden" Source="{Binding Path=Frost, ElementName=WohneinheitUiElementUserControl}" HorizontalAlignment="Left" Height="50" Margin="315,35,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="6.938,1.31"/>
-        <Image x:Name="FensterIcon" Visibility="Hidden" Source="{Binding Path=Fenster, ElementName=WohneinheitUiElementUserControl}" HorizontalAlignment="Left" Height="50" Margin="315,35,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="6.938,1.31"/>
-        <Image x:Name="StoerIcon" Visibility="Hidden" Source="{Binding Path=Stoer, ElementName=WohneinheitUiElementUserControl}" HorizontalAlignment="Left" Height="50" Margin="315,35,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="6.938,1.31"/>
-        <Image x:Name="MultipleIcon" Visibility="Hidden" Source="{Binding Path=Multiple, ElementName=WohneinheitUiElementUserControl}" HorizontalAlignment="Left" Height="50" Margin="315,35,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="6.938,1.31"/>
-        <Label Content="Aktuell" HorizontalAlignment="Left" Margin="106,4,0,0" VerticalAlignment="Top"/>
-        <Label Content="Ziel" HorizontalAlignment="Left" Margin="210,4,0,0" VerticalAlignment="Top"/>
+        <!-- <Image Source="pack://application:,,,/Icons/Thermometer.gif" HorizontalAlignment="Left" Height="60" Margin="117,30,0,0" VerticalAlignment="Top" Width="27" RenderTransformOrigin="6.938,1.31"/> -->
+        <!-- <Image Source="pack://application:,,,/Icons/Thermometer.gif" HorizontalAlignment="Left" Height="60" Margin="215,30,0,0" VerticalAlignment="Top" Width="25" RenderTransformOrigin="6.938,1.31"/> -->
+        <Image x:Name="FeuerIcon" Visibility="Hidden" Source="{Binding Path=Feuer, ElementName=WohneinheitUiElementUserControl}" HorizontalAlignment="Right" Height="50" Margin="{Binding Path=MarginFive, ElementName=WohneinheitUiElementUserControl}" VerticalAlignment="Top" Width="50" RenderTransformOrigin="6.938,1.31"/>
+        <Image x:Name="FrostIcon" Visibility="Hidden" Source="{Binding Path=Frost, ElementName=WohneinheitUiElementUserControl}" HorizontalAlignment="Right" Height="50" Margin="{Binding Path=MarginFive, ElementName=WohneinheitUiElementUserControl}" VerticalAlignment="Top" Width="50" RenderTransformOrigin="6.938,1.31"/>
+        <Image x:Name="FensterIcon" Visibility="Hidden" Source="{Binding Path=Fenster, ElementName=WohneinheitUiElementUserControl}" HorizontalAlignment="Right" Height="50" Margin="{Binding Path=MarginFive, ElementName=WohneinheitUiElementUserControl}" VerticalAlignment="Top" Width="50" RenderTransformOrigin="6.938,1.31"/>
+        <Image x:Name="StoerIcon" Visibility="Hidden" Source="{Binding Path=Stoer, ElementName=WohneinheitUiElementUserControl}" HorizontalAlignment="Right" Height="50" Margin="{Binding Path=MarginFive, ElementName=WohneinheitUiElementUserControl}" VerticalAlignment="Top" Width="50" RenderTransformOrigin="6.938,1.31"/>
+        <Image x:Name="MultipleIcon" Visibility="Hidden" Source="{Binding Path=Multiple, ElementName=WohneinheitUiElementUserControl}" HorizontalAlignment="Right" Height="50" Margin="{Binding Path=MarginFive, ElementName=WohneinheitUiElementUserControl}" VerticalAlignment="Top" Width="50" RenderTransformOrigin="6.938,1.31"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Stretch" Height="1" Margin="0,119,0,0" Stroke="Black" VerticalAlignment="Top"/>
+        <!--<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="500"/>-->
+        <!-- <Label Content="Aktuell" HorizontalAlignment="Left" Margin="106,4,0,0" VerticalAlignment="Top"/> -->
+        <!-- <Label Content="Ziel" HorizontalAlignment="Left" Margin="210,4,0,0" VerticalAlignment="Top"/> -->
     </Grid>
 </UserControl>
