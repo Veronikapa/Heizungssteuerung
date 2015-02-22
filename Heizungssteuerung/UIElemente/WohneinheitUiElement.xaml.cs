@@ -26,8 +26,14 @@ namespace Heizungssteuerung.UIElemente
                 "WohneinheitElement", 
                 typeof(Wohneinheit),
                 typeof(WohneinheitUiElement), 
+                new FrameworkPropertyMetadata(OnAvailableItemsChanged));
+
+        public static readonly DependencyProperty TreeViewProperty =
+            DependencyProperty.Register(
+                "TreeViewReference",
+                typeof(TreeView),
+                typeof(WohneinheitUiElement),
                 new FrameworkPropertyMetadata(null));
-       
 
         public WohneinheitUiElement()
         {
@@ -37,6 +43,18 @@ namespace Heizungssteuerung.UIElemente
         }
 
         public EventHandler WohneinheitUiElementZielTemperaturVeraendert;
+
+        public TreeView TreeViewReference
+        {
+            get
+            {
+                return (TreeView)GetValue(TreeViewProperty);
+            }
+            set
+            {
+                SetValue(TreeViewProperty, value);
+            }
+        }
 
         public Wohneinheit WohneinheitElement
         {
@@ -60,7 +78,7 @@ namespace Heizungssteuerung.UIElemente
 
         void WohneinheitUiElement_Loaded(object sender, RoutedEventArgs e)
         {
-            bool frostIconVisible = false;
+            /*bool frostIconVisible = false;
             bool feuerIconVisible = false;
             bool fensterIconVisible = false;
             bool stoerIconVisible = false;
@@ -131,23 +149,22 @@ namespace Heizungssteuerung.UIElemente
             else if (stoerIconVisible)
             {
                 StoerIcon.Visibility = Visibility.Visible;
-            }
+            }*/
         }
 
         private void ZielTemperaturErhoehen_Click(object sender, RoutedEventArgs e)
         {
             this.WohneinheitElement.ZielTemperaturErhoehen();
-
-            if (WohneinheitUiElementZielTemperaturVeraendert != null)
-                WohneinheitUiElementZielTemperaturVeraendert(sender, e);
+            this.TreeViewReference.Items.Refresh();
+            this.TreeViewReference.UpdateLayout();
+            
         }
 
         private void ZielTemperaturVerringern_Click(object sender, RoutedEventArgs e)
         {
             this.WohneinheitElement.ZielTemperaturVerringern();
-
-            if (WohneinheitUiElementZielTemperaturVeraendert != null)
-                WohneinheitUiElementZielTemperaturVeraendert(sender, e);
+            this.TreeViewReference.Items.Refresh();
+            this.TreeViewReference.UpdateLayout();
         }
     }
 }

@@ -44,6 +44,18 @@ namespace Heizungssteuerung
             }
         }
 
+        public TreeView MainTreeView
+        {
+            get
+            {
+                return this.temperaturTree;
+            }
+            set
+            {
+                this.temperaturTree = value;
+            }
+        }
+
         public MainTemperaturEinstellen(Gebaeude g)
         {
             DataContext = this;

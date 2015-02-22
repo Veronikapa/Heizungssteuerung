@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Heizungssteuerung.Backend"
        
-        Title="Fensterstatus prüfen" Height="700" Width="500" x:Name= "MainFensterStatusPruefenWindow" >
+        Title="Fensterstatus prüfen" Height="700" Width="500" x:Name= "MainFensterStatusPruefenWindow" WindowStartupLocation="CenterScreen">
     <!--Leiste mit zurück Button-->
     <Grid>
         <StackPanel Height="25" VerticalAlignment="Top" Orientation="Horizontal" Background="GhostWhite">

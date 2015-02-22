@@ -3,9 +3,15 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Heizungssteuerung.UIElemente"
-        Title="Temperatur einstellen" Height="700" Width="500" x:Name="MainTemperaturEinstellenWindow">
+        Title="Temperatur einstellen" Height="700" Width="500" x:Name="MainTemperaturEinstellenWindow" WindowStartupLocation="CenterScreen">
     
     <Grid>
+        <Grid.Resources>
+            <Style x:Key ="elementStyle" TargetType="{x:Type TreeViewItem}">
+                <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+            </Style>
+        </Grid.Resources>
+        
         <StackPanel Height="25" VerticalAlignment="Top" Orientation="Horizontal" Background="GhostWhite">
             <Button Height="25" Width="30" HorizontalAlignment="Left" PreviewMouseDown="Zurück_MouseDown" Background="Transparent" BorderThickness="0">
                 <Image Source="pack://application:,,,/Icons/Zurueck_Icon.gif"/>
@@ -18,19 +24,19 @@
         
         <StackPanel x:Name="temperaturPanel" Margin="0,25,0,0" Orientation="Vertical">
             <Grid HorizontalAlignment="Left" Height="675" Width="500" Margin="0,0,0,0">
-                <TreeView x:Name="temperaturTree" ItemsSource ="{Binding GebaeudeListe, Mode=TwoWay, ElementName=MainTemperaturEinstellenWindow}" Height="675" Margin="0,0,0,0" VerticalAlignment="Top">
-    
+                <TreeView x:Name="temperaturTree" ItemsSource ="{Binding GebaeudeListe, Mode=TwoWay, ElementName=MainTemperaturEinstellenWindow}" Height="675" Margin="0,0,0,0" VerticalAlignment="Top" ItemContainerStyle="{StaticResource elementStyle}">
+                    
                     <TreeView.ItemTemplate>
                         <!--Gebäude Template -->
                         <HierarchicalDataTemplate ItemsSource="{Binding StockwerkListe}">
-                            <local:WohneinheitUiElement WohneinheitElement="{Binding}" />
+                            <local:WohneinheitUiElement WohneinheitElement="{Binding }" TreeViewReference="{Binding MainTreeView, ElementName=MainTemperaturEinstellenWindow}" />
                             <!--StockwerkTemplate-->
                             <HierarchicalDataTemplate.ItemTemplate>
-                                <HierarchicalDataTemplate ItemsSource="{Binding RaumListe }">
-                                    <local:WohneinheitUiElement WohneinheitElement="{Binding}" />
+                                <HierarchicalDataTemplate ItemsSource="{Binding RaumListe}">
+                                    <local:WohneinheitUiElement WohneinheitElement="{Binding }" TreeViewReference="{Binding MainTreeView, ElementName=MainTemperaturEinstellenWindow}" />
                                     <HierarchicalDataTemplate.ItemTemplate>
                                         <DataTemplate>
-                                            <local:WohneinheitUiElement WohneinheitElement="{Binding}" />
+                                            <local:WohneinheitUiElement WohneinheitElement="{Binding }" TreeViewReference="{Binding MainTreeView, ElementName=MainTemperaturEinstellenWindow}"/>
                                         </DataTemplate>
                                     </HierarchicalDataTemplate.ItemTemplate>
                                 </HierarchicalDataTemplate>
