@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Heizungssteuerung.Backend"
        
-        Title="Fensterstatus prüfen" Height="700" Width="500" x:Name= "MainFensterStatusPruefenWindow" WindowStartupLocation="CenterScreen">
+        Title="Fensterstatus prüfen" Height="700" Width="518" x:Name= "MainFensterStatusPruefenWindow" WindowStartupLocation="CenterScreen">
     <!--Leiste mit zurück Button-->
     <Grid>
         <StackPanel Height="25" VerticalAlignment="Top" Orientation="Horizontal" Background="GhostWhite">
@@ -14,7 +14,7 @@
 
         <!--Die 3 Radiobuttons-->
         <StackPanel x:Name="FensterstatusPanel" Margin="0,25,0,0" Orientation="Vertical">
-            <Grid HorizontalAlignment="Left" Height="57" Width="492" Background="AliceBlue">
+            <Grid HorizontalAlignment="Left" Height="57" Width="510" Background="AliceBlue">
                 <RadioButton x:Name="rdbtbn_alle"  HorizontalAlignment="Left" Margin="18,11,0,7" Width="109" Background="AliceBlue" RenderTransformOrigin="0.5,0.5" IsChecked="True">
                     <TextBlock x:Name="alleFenster" TextWrapping="Wrap" TextAlignment="Center" Height="38" Width="87" HorizontalAlignment="Center" VerticalAlignment="Center" ><Run Text="Alle Fenster "/><LineBreak/><Run Text="Anzeigen"/></TextBlock>
                 </RadioButton>
@@ -112,7 +112,7 @@
                 </Grid.Resources>
 
                 <!--Anfang Treeview-->
-                <TreeView x:Name="fensterStatus"  ItemsSource ="{Binding GebaeudeListe, ElementName=MainFensterStatusPruefenWindow, Mode=TwoWay}" Height="566" Margin="0,0,0,10" VerticalAlignment="Bottom" ItemContainerStyle="{StaticResource styleTreeView}"  >
+                <TreeView x:Name="fensterStatus"  ItemsSource ="{Binding GebaeudeListe, ElementName=MainFensterStatusPruefenWindow, Mode=TwoWay}" Height="566" Margin="0,0,-16,10" VerticalAlignment="Bottom" ItemContainerStyle="{StaticResource styleTreeView}"  >
                   
                     <!--Templates für das Aussehen der Treeview Elemente-->
                     <TreeView.ItemTemplate>

@@ -305,39 +305,42 @@ namespace Heizungssteuerung.UIElemente
 
             bool fensterOffen = this.WohneinheitElement.AnzahlFenster() > this.WohneinheitElement.AnzahlGeschlosseneFenster();
 
-            if (this.WohneinheitElement.AktuelleTemperatur >= Wohneinheit.GRENZE_FEUER)
+            if (this.WohneinheitElement.GetType().Equals(typeof(Raum)))
             {
-                if (fensterOffen)
+                if (this.WohneinheitElement.AktuelleTemperatur >= Wohneinheit.GRENZE_FEUER)
                 {
-                    FeuerFensterIcon.Visibility = Visibility.Visible;
+                    if (fensterOffen)
+                    {
+                        FeuerFensterIcon.Visibility = Visibility.Visible;
                     
+                    }
+                    else
+                    {
+                        FeuerIcon.Visibility = Visibility.Visible;
+                    }
+
+                    return;
                 }
-                else
+
+                if (this.WohneinheitElement.AktuelleTemperatur <= Wohneinheit.GRENZE_FROST)
                 {
-                    FeuerIcon.Visibility = Visibility.Visible;
+                    if (fensterOffen)
+                    {
+                        FrostFensterIcon.Visibility = Visibility.Visible;
+
+                    }
+                    else
+                    {
+                        FrostIcon.Visibility = Visibility.Visible;
+                    }
+
+                    return;
                 }
 
-                return;
-            }
-
-            if (this.WohneinheitElement.AktuelleTemperatur <= Wohneinheit.GRENZE_FROST)
-            {
                 if (fensterOffen)
                 {
-                    FrostFensterIcon.Visibility = Visibility.Visible;
-
+                    FensterIcon.Visibility = Visibility.Visible;
                 }
-                else
-                {
-                    FrostIcon.Visibility = Visibility.Visible;
-                }
-
-                return;
-            }
-
-            if (fensterOffen)
-            {
-                FensterIcon.Visibility = Visibility.Visible;
             }
         }
 

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:my="clr-namespace:Heizungssteuerung.UIElemente"
              mc:Ignorable="d"
-             d:DesignHeight="120" d:DesignWidth="500" x:Name="WohneinheitUiElementUserControl">
+             d:DesignHeight="120" x:Name="WohneinheitUiElementUserControl">
     <Grid>
         <Label Content="{Binding Path=WohneinheitElement.WohneinheitId, ElementName=WohneinheitUiElementUserControl, Mode=TwoWay}" FontWeight="Bold" FontSize="14" Height="25" HorizontalAlignment="Left" Margin="0,48,0,0" VerticalAlignment="Top" Width="112" Foreground="{Binding Path=ForegroundColor, ElementName=WohneinheitUiElementUserControl}"/>
         <Label Content="{Binding Path=WohneinheitElement.AktuelleTemperatur, ElementName=WohneinheitUiElementUserControl, Mode=TwoWay}" FontWeight="Bold" FontSize="14" Height="25" HorizontalAlignment="Left" Margin="{Binding Path=MarginOne, ElementName=WohneinheitUiElementUserControl}" VerticalAlignment="Top" Width="50" Foreground="{Binding Path=ForegroundColor, ElementName=WohneinheitUiElementUserControl}"/>
